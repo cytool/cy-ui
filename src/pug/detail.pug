@@ -1,0 +1,15 @@
+extends _tpl/_base.pug
+
+
+block css
+    +css(['detail'])
+
+block cc
+    
+    .wrapper
+        include _tpl/_head.pug
+        .flex
+            iframe(src="/components/drawer.html")
+
+
+        

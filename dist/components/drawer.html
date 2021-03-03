@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>CYTOOL-UI组件库</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta content="telephone=no" name="format-detection">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/components/drawer.css"/>
+    <script src="/js/components/drawer.js"></script>
+  </head>
+  <body>
+    <div class="demo">
+      <div class="demo-title">抽屉示例</div>
+      <div class="demo-item">
+        <div class="drawer">点我，点我</div>
+      </div>
+    </div>
+    <div class="ui-drawer">
+      <p>我是内容区块哦</p>
+    </div>
+    <script>
+      var d = new cyui.Drawer({
+          trigger: '.drawer', // 触发弹窗的按钮
+          content: '.ui-drawer'
+      })
+    </script>
+  </body>
+</html>

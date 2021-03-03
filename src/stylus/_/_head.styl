@@ -1,0 +1,28 @@
+.header
+    display flex
+    height 50px
+    justify-content flex-end
+
+    .menu
+        background-color rgb(3, 169, 243)
+        border-bottom-left-radius 50px
+        line-height 50px
+        width 50px
+
+        &:after
+            background-image radial-gradient(
+                5px circle at 22px 22px,
+                #FFFFFF 50%,
+                transparent 51%
+            ), radial-gradient(
+                5px circle at 31px 22px,
+                #FFFFFF 50%,
+                transparent 51%
+            ), radial-gradient(
+                5px circle at 40px 22px,
+                #FFFFFF 50%,
+                transparent 51%
+            )
+            content ''
+            display block
+            height 50px

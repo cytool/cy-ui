@@ -1,0 +1,17 @@
+extends _tpl/_base.pug
+
+
+block css
+    +css(['index'])
+
+block cc
+    .wrapper
+        .index
+            h1.name 组件库
+            p.intro 超级无敌好用的页面组件库
+
+            ul.list
+                li
+                    a(href='/detail.html?type=form') 表单
+                li
+                    a(href='/detail.html?type=drawer') 抽屉

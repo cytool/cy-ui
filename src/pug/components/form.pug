@@ -1,0 +1,76 @@
+extends ../_tpl/_base.pug
+
+block css
+    +css(['components/form'])
+block js
+    +js(['components/form'])
+
+block cc
+    
+    .demo
+        .demo-title 表单样式一
+        .demo-item
+            #verfiyForm.ui-form.ui-form-line
+                .ui-form-item
+                    .ui-input-content
+                        .ui-label
+                            label(for='#') 必填但不验证
+                        .ui-input-box
+                            .ui-input-in    
+                                input(type='text', placeholder='请输入手机号', data-required)
+                
+                .ui-form-item
+                    .ui-input-content
+                        .ui-label
+                            label(for='#') 验证但不必填
+                        .ui-input-box
+                            .ui-input-in    
+                                input(type='text', placeholder='请输入手机号', data-verify='phone')
+
+                .ui-form-item
+                    .ui-input-content
+                        .ui-label
+                            label(for='#') 必填且验证
+                        .ui-input-box
+                            .ui-input-in    
+                                input(type='text', placeholder='请输入手机号', data-verify='phone', data-required)
+        
+        
+        .demo-title 表单样式二
+        .demo-item
+            #verfiyForm2.ui-form.ui-form-shadow
+                .ui-form-item
+                    .ui-input-content
+                        .ui-label
+                            label(for='#') 必填但不验证
+                        .ui-input-box
+                            .ui-input-in    
+                                input(type='text', placeholder='请输入手机号', data-required)
+                
+                .ui-form-item
+                    .ui-input-content
+                        .ui-label
+                            label(for='#') 验证但不必填
+                        .ui-input-box
+                            .ui-input-in    
+                                input(type='text', placeholder='请输入手机号', data-verify='phone')
+
+                .ui-form-item
+                    .ui-input-content
+                        .ui-label
+                            label(for='#') 必填且验证
+                        .ui-input-box
+                            .ui-input-in    
+                                input(type='text', placeholder='请输入手机号', data-verify='phone', data-required)
+                
+    script.
+        var v = new cyui.Form({
+            dom: '#verfiyForm',
+            tipSkin: 1, // 表单样式
+            trigger: 'input', // 触发校验方式，实时
+        })
+        var v2 = new cyui.Form({
+            dom: '#verfiyForm2',
+            tipSkin: 2, // 表单样式
+            trigger: 'input', // 触发校验方式，实时
+        })
