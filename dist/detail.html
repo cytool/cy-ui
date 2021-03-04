@@ -10,15 +10,35 @@
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="/css/base.css">
     <link rel="stylesheet" href="/css/detail.css"/>
+    <link rel="stylesheet" href="/css/components/drawer.css"/>
+    <script src="/js/components/drawer.js"></script>
   </head>
   <body>
     <div class="wrapper">
       <div class="header">
         <div class="menu"></div>
       </div>
+      <div class="ui-drawer">
+        <ul class="nav">
+          <li><a href="/">home</a></li>
+          <li><a href="/detail.html?type=form">form</a></li>
+          <li><a href="/detail.html?type=drawer">drawer</a></li>
+        </ul>
+      </div>
+      <script>
+        var d = new cyui.Drawer({
+            trigger: '.menu', // 触发弹窗的按钮
+            content: '.ui-drawer'
+        })
+      </script>
       <div class="flex">
-        <iframe src="/components/drawer.html"></iframe>
+        <iframe> </iframe>
       </div>
     </div>
+    <script>
+      var type = location.search.replace(/\?type=/, '')
+      var src = `/components/${type}.html`
+      document.querySelector('iframe').setAttribute('src', src)
+    </script>
   </body>
 </html>

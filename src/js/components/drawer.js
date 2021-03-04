@@ -12,22 +12,38 @@ cyui.Drawer = function (args) {
 
 cyui.Drawer.prototype = {
     init() {
-        var childNodes = this.content.childNodes
-        var copyNodes = []
-        childNodes.forEach(item => {
-            if (item.nodeType === 1) copyNodes.push(item)
-        })
+
+
         this.content.classList.add('ui-drawer')
+
+
+
+        var contentNode = document.createElement('div')
+        contentNode.classList.add('ui-drawer-content')
+
+        var childNodes = this.content.childNodes
+        if (childNodes) {
+            var copyNodes = []
+            childNodes.forEach(item => {
+                if (item.nodeType === 1) copyNodes.push(item)
+            })
+
+            copyNodes.forEach(item => contentNode.appendChild(item))
+        }
+
+        this.content.appendChild(contentNode)
 
         var closeNode = document.createElement('div')
         closeNode.classList.add('ui-drawer-close')
         this.content.appendChild(closeNode)
 
-        var contentNode = document.createElement('div')
-        contentNode.classList.add('ui-drawer-content')
-        copyNodes.forEach(item => contentNode.appendChild(item))
-        this.content.appendChild(contentNode)
+        this.initEvent()
 
+
+    },
+
+    initEvent() {
+        this.content.querySelector('.ui-drawer-close').addEventListener('click', () => this.close())
     },
 
     show() {

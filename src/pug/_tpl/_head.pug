@@ -1,3 +1,18 @@
 .header
     .menu
 
+
+.ui-drawer
+    ul.nav
+        li
+            a(href='/') home
+        li
+            a(href='/detail.html?type=form') form
+        li
+            a(href='/detail.html?type=drawer') drawer
+
+script.
+    var d = new cyui.Drawer({
+        trigger: '.menu', // 触发弹窗的按钮
+        content: '.ui-drawer'
+    })
