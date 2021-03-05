@@ -9,6 +9,8 @@
     <meta content="telephone=no" name="format-detection">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/assets/hl/prism.css">
+    <script src="/assets/hl/prism.js"></script>
     <link rel="stylesheet" href="/css/components/form.css"/>
     <script src="/js/components/form.js"></script>
   </head>
@@ -96,17 +98,33 @@
           </div>
         </div>
       </div>
+      <div class="demo-title">使用方法</div>
+      <div class="demo-code">
+        <div class="hl">
+          <pre><code class="language-js">var v = new cyui.Form({
+    dom: '#verfiyForm',
+    tipSkin: 1, // 表单样式，默认
+    trigger: 'input', // 校验方式，默认
+})
+
+var v2 = new cyui.Form({
+    dom: '#verfiyForm2',
+    tipSkin: 2, // 表单样式
+    trigger: 'blur', // 校验方式
+})</code></pre>
+        </div>
+      </div>
     </div>
     <script>
       var v = new cyui.Form({
           dom: '#verfiyForm',
           tipSkin: 1, // 表单样式
-          trigger: 'input', // 触发校验方式，实时
+          trigger: 'input', // 校验方式，实时
       })
       var v2 = new cyui.Form({
           dom: '#verfiyForm2',
           tipSkin: 2, // 表单样式
-          trigger: 'input', // 触发校验方式，实时
+          trigger: 'input', // 校验方式，实时
       })
     </script>
   </body>

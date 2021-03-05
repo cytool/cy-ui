@@ -10,16 +10,12 @@ block cc
     .demo
         .demo-title 抽屉示例
         .demo-item
-            .drawer 点我，点我
+            p.txt 请点击右上角
 
-    .ui-drawer
-        //- .ui-drawer-close
-        //- .ui-drawer-content
-        p 我是内容区块哦
-        
-
-    script.
-        var d = new cyui.Drawer({
-            trigger: '.drawer', // 触发弹窗的按钮
-            content: '.ui-drawer'
-        })
+        - var code = "var d = new cyui.Drawer({\n    trigger: '.menu', // 触发弹窗的按钮\n    content: '.ui-drawer' // 弹窗内容\n})"
+        .demo-title 使用方法
+        .demo-code
+            .hl
+                pre
+                    code(class='language-js') #{code}
+            

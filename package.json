@@ -32,10 +32,13 @@
     "gulp-uglify": "^3.0.2"
   },
   "dependencies": {
+    "@commitlint/cli": "^12.0.1",
+    "@commitlint/config-conventional": "^12.0.1",
     "gulp-debug": "^4.0.0",
     "gulp-filter-size": "^1.0.2",
     "gulp-prettify": "^0.5.0",
     "gulp-size": "^3.0.0",
-    "gulp-tinypng-nokey-plus": "^1.0.1"
+    "gulp-tinypng-nokey-plus": "^1.0.1",
+    "husky": "4.3.8"
   }
 }
