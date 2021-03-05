@@ -4,7 +4,7 @@ let endX
 let transformNum = 0
 
 cyui.City = function (args) {
-
+    this.createDom()
     this.dom = document.querySelector(args.dom || args)
     this.show = false
     this.province = {}
@@ -14,10 +14,37 @@ cyui.City = function (args) {
     this.dom.querySelector('.cyui-input-input')?.addEventListener('click', () => this.showBox(true))
     document.querySelector('.cyui-input-close')?.addEventListener('click', () => this.showBox(false))
     document.querySelector('.cyui-input-ul-box')?.addEventListener('touchstart', e => this.scrollUlStart(e))
-    document.querySelector('.cyui-input-ul-box')?.addEventListener('touchend', e => this.scrollUlEnd(e))
+    document.querySelector('.cyui-input-ul-box')?.addEventListener('touchend', e => this.scrollUlEnd(e)) 
 }
 
 cyui.City.prototype = {
+    /**
+     * 创建插件所需节点
+     * @param {Boolean} show 是否显示弹窗
+     * @return {void}
+     */
+    createDom() {
+        if(document.querySelector('.cyui-input-dialog') === null) {
+            let contentNode = document.createElement('div')
+            contentNode.setAttribute('class', 'cyui-input-dialog')
+            contentNode.innerHTML = `
+            <div class="cyui-input-box">
+                <h3 class="cyui-input-title">请选择所在地区</h3>
+                <div class="cyui-input-close">×</div>
+                <div class="cyui-input-select"></div>
+                <div class="cyui-input-card">
+                    <div class="cyui-input-ul-box">
+                        <ul class="cyui-input-ul" id="cyui-input-province"></ul>
+                        <ul class="cyui-input-ul" id="cyui-input-city"></ul>
+                        <ul class="cyui-input-ul" id="cyui-input-area"></ul>
+                        <ul class="cyui-input-ul" id="cyui-input-street"></ul>
+                    </div>
+                </div>
+            </div>
+            `
+            document.querySelector('body').appendChild(contentNode)
+        }
+    },
     /**
      * 点击弹出弹窗
      * @param {Boolean} show 是否显示弹窗
@@ -25,8 +52,6 @@ cyui.City.prototype = {
      */
     showBox: function (show) {
         this.show = show
-        transformNum = 1
-        this.moveBox(0)
         if (this.show) {
             document.querySelector('.cyui-input-dialog').classList.add('on')
             setTimeout(() => {
@@ -223,7 +248,7 @@ cyui.City.prototype = {
             }
             this.city = {}
             this.area = {}
-            this.desc = {}
+            this.street = {}
         }
 
         this.setSelectValue()
@@ -250,7 +275,7 @@ cyui.City.prototype = {
                 desc: e.target.dataset.desc
             }
             this.area = {}
-            this.desc = {}
+            this.street = {}
         }
 
         this.setSelectValue()
@@ -276,7 +301,7 @@ cyui.City.prototype = {
                 code: e.target.dataset.code,
                 desc: e.target.dataset.desc
             }
-            this.desc = {}
+            this.street = {}
         }
 
         this.setSelectValue()
