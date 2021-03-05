@@ -11,3 +11,11 @@ block cc
         .demo-title 抽屉示例
         .demo-item
             p.txt 请点击右上角
+
+        - var code = "var d = new cyui.Drawer({\n    trigger: '.menu', // 触发弹窗的按钮\n    content: '.ui-drawer' // 弹窗内容\n})"
+        .demo-title 使用方法
+        .demo-code
+            .hl
+                pre
+                    code(class='language-js') #{code}
+            
