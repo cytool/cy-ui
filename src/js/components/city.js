@@ -25,7 +25,7 @@ cyui.City.prototype = {
      * @return {void}
      */
     createDom() {
-        if(document.querySelector('.cyui-input-dialog') === null) {
+        if (document.querySelector('.cyui-input-dialog') === null) {
             let contentNode = document.createElement('div')
             contentNode.setAttribute('class', 'cyui-input-dialog')
             contentNode.innerHTML = `
@@ -65,7 +65,7 @@ cyui.City.prototype = {
                 document.querySelector('.cyui-input-dialog').classList.remove('on')
             }, 500)
         }
-        this.showProvince()
+        this.showAddressList('province')
     },
     /**
      * 触摸开始事件，记录初始触摸位置
@@ -137,7 +137,7 @@ cyui.City.prototype = {
      */
     scrollUlMove(e) {
         let boxLeft = (startX - e.touches[0].clientX) / document.documentElement.clientWidth * 100
-        document.querySelector('.cyui-input-ul-box').setAttribute('style','transform:translateX('+(-25*transformNum-boxLeft/4)+'%)')
+        document.querySelector('.cyui-input-ul-box').setAttribute('style', 'transform:translateX(' + (-25 * transformNum - boxLeft / 4) + '%)')
     },
     /**
      * 滑动选择框
@@ -170,212 +170,127 @@ cyui.City.prototype = {
         this.setSelectValue()
     },
     /**
-     * 渲染省列表
+     * 渲染省市区列表
+     * @param {String} type province,city,area,street，分别表示省市区街道
      * @return {void}
      */
-    showProvince() {
-        document.querySelector('#cyui-input-province').innerHTML = ''
-        for (let o of address.province) {
-            let contentNode = document.createElement('li')
-            contentNode.innerText = o.desc
-            contentNode.setAttribute('data-desc', o.desc)
-            contentNode.setAttribute('data-code', o.code)
-            if (this.province.code && this.province.code === o.code) {
-                contentNode.classList.add('on')
-            }
-            document.querySelector('#cyui-input-province').appendChild(contentNode)
+    showAddressList(type) {
+        document.querySelector(`#cyui-input-${type}`).innerHTML = ''
+        let findNum
+        let typeParent
+        switch (type) {
+            case 'province':
+                typeParent = 'province'
+                break
+            case 'city':
+                findNum = 2
+                typeParent = 'province'
+                break
+            case 'area':
+                findNum = 4
+                typeParent = 'city'
+                break
+            case 'street':
+                findNum = 6
+                typeParent = 'area'
+                break
         }
-
-        let provinceArr = document.querySelectorAll('#cyui-input-province li')
-        for (let o of provinceArr) {
-            o.onclick = e => this.clickProvince(e)
-        }
-    },
-    /**
-     * 渲染市列表
-     * @return {void}
-     */
-    showCity() {
-        document.querySelector('#cyui-input-city').innerHTML = ''
-        for (let o of address.city) {
-            if (o.code.substr(0, 2) === this.province.code.substr(0, 2)) {
+        for (let o of address[type]) {
+            if (type === 'province' || o.code.substr(0, findNum) === this[typeParent].code.substr(0, findNum)) {
                 let contentNode = document.createElement('li')
                 contentNode.innerText = o.desc
                 contentNode.setAttribute('data-desc', o.desc)
                 contentNode.setAttribute('data-code', o.code)
-                if (this.city.code && this.city.code === o.code) {
+                if (this[type].code && this[type].code === o.code) {
                     contentNode.classList.add('on')
                 }
-                document.querySelector('#cyui-input-city').appendChild(contentNode)
+                document.querySelector(`#cyui-input-${type}`).appendChild(contentNode)
             }
         }
 
-        let provinceArr = document.querySelectorAll('#cyui-input-city li')
-        for (let o of provinceArr) {
-            o.onclick = e => this.clickCity(e)
+        let domArr = document.querySelectorAll(`#cyui-input-${type} li`)
+        for (let o of domArr) {
+            o.onclick = e => this.clickRow(e, type)
         }
     },
     /**
-    * 渲染县列表
-    * @return {void}
-    */
-    showArea() {
-        document.querySelector('#cyui-input-area').innerHTML = ''
-        for (let o of address.area) {
-            if (o.code.substr(0, 4) === this.city.code.substr(0, 4)) {
-                let contentNode = document.createElement('li')
-                contentNode.innerText = o.desc
-                contentNode.setAttribute('data-desc', o.desc)
-                contentNode.setAttribute('data-code', o.code)
-                if (this.area.code && this.area.code === o.code) {
-                    contentNode.classList.add('on')
-                }
-                document.querySelector('#cyui-input-area').appendChild(contentNode)
-            }
-        }
-
-        let provinceArr = document.querySelectorAll('#cyui-input-area li')
-        for (let o of provinceArr) {
-            o.onclick = e => this.clickArea(e)
-        }
-    },
-    /**
-     * 渲染镇列表
-     * @return {void}
-     */
-    showStreet() {
-        document.querySelector('#cyui-input-street').innerHTML = ''
-        for (let o of address.street) {
-            if (o.code.substr(0, 6) === this.area.code.substr(0, 6)) {
-                let contentNode = document.createElement('li')
-                contentNode.innerText = o.desc
-                contentNode.setAttribute('data-desc', o.desc)
-                contentNode.setAttribute('data-code', o.code)
-                if (this.street.code && this.street.code === o.code) {
-                    contentNode.classList.add('on')
-                }
-                document.querySelector('#cyui-input-street').appendChild(contentNode)
-            }
-        }
-
-        let provinceArr = document.querySelectorAll('#cyui-input-street li')
-        for (let o of provinceArr) {
-            o.onclick = e => this.clickStreet(e)
-        }
-    },
-    /**
-     * 点击选择哪个省
+     * 点击选择哪个省市区街道
      * @param {Object} e 事件对象
+     * @param {String} type province,city,area,street，分别表示省市区街道
      * @return {void}
      */
-    clickProvince(e) {
-        console.log(e.target.dataset.code)
-        console.log(e.target.dataset.desc)
-        let provinceArr = document.querySelectorAll('#cyui-input-province li')
-        for (let o of provinceArr) {
+    clickRow(e, type) {
+        let domArr = document.querySelectorAll(`#cyui-input-${type} li`)
+        for (let o of domArr) {
             o.classList.remove('on')
         }
         e.target.classList.add('on')
 
-        if (!this.province.code || this.province.code !== e.target.dataset.code) {
-            this.province = {
+        if (!this[type].code || this[type].code !== e.target.dataset.code) {
+            this[type] = {
                 code: e.target.dataset.code,
                 desc: e.target.dataset.desc
             }
-            this.city = {}
-            this.area = {}
-            this.street = {}
-            document.querySelector('#cyui-input-city').innerHTML = ''
-            document.querySelector('#cyui-input-area').innerHTML = ''
-            document.querySelector('#cyui-input-street').innerHTML = ''
+            this.clearList(type)
+
         }
 
-        this.moveBox(1)
-        this.setSelectValue()
-        this.showCity()
+        switch (type) {
+            case 'province':
+                this.moveBox(1)
+                this.setSelectValue()
+                this.showAddressList('city')
+                break
+            case 'city':
+                this.moveBox(1)
+                this.setSelectValue()
+                this.showAddressList('area')
+                break
+            case 'area':
+                let indexStreet = address.street.findIndex(item => item.code.substr(0, 6) === this.area.code.substr(0, 6))
+                this.setSelectValue()
+                if (indexStreet > -1) {
+                    this.moveBox(1)
+                    this.showAddressList('street')
+                } else {
+                    this.showBox(false)
+                    this.saveValue()
+                }
+                break
+            case 'street':
+                this.setSelectValue()
+                this.showBox(false)
+                this.saveValue()
+                break
+        }
     },
     /**
-     * 点击选择哪个市
+     * 点击选择哪个省市区街道
      * @param {Object} e 事件对象
+     * @param {String} type province,city,area,street，分别表示省市区街道
      * @return {void}
      */
-    clickCity(e) {
-        console.log(e.target.dataset.code)
-        console.log(e.target.dataset.desc)
-        let cityArr = document.querySelectorAll('#cyui-input-city li')
-        for (let o of cityArr) {
-            o.classList.remove('on')
+    clearList(type) {
+        switch (type) {
+            case 'province':
+                this.city = {}
+                this.area = {}
+                this.street = {}
+                document.querySelector('#cyui-input-city').innerHTML = ''
+                document.querySelector('#cyui-input-area').innerHTML = ''
+                document.querySelector('#cyui-input-street').innerHTML = ''
+                break
+            case 'city':
+                this.area = {}
+                this.street = {}
+                document.querySelector('#cyui-input-area').innerHTML = ''
+                document.querySelector('#cyui-input-street').innerHTML = ''
+                break
+            case 'area':
+                this.street = {}
+                document.querySelector('#cyui-input-street').innerHTML = ''
+                break
         }
-        e.target.classList.add('on')
-
-        if (!this.city.code || this.city.code !== e.target.dataset.code) {
-            this.city = {
-                code: e.target.dataset.code,
-                desc: e.target.dataset.desc
-            }
-            this.area = {}
-            this.street = {}
-            document.querySelector('#cyui-input-area').innerHTML = ''
-            document.querySelector('#cyui-input-street').innerHTML = ''
-        }
-
-        this.moveBox(1)
-        this.setSelectValue()
-        this.showArea()
-    },
-    /**
-    * 点击选择哪个县
-    * @param {Object} e 事件对象
-    * @return {void}
-    */
-    clickArea(e) {
-        console.log(e.target.dataset.code)
-        console.log(e.target.dataset.desc)
-        let areaArr = document.querySelectorAll('#cyui-input-area li')
-        for (let o of areaArr) {
-            o.classList.remove('on')
-        }
-        e.target.classList.add('on')
-
-        if (!this.area.code || this.area.code !== e.target.dataset.code) {
-            this.area = {
-                code: e.target.dataset.code,
-                desc: e.target.dataset.desc
-            }
-            this.street = {}
-            document.querySelector('#cyui-input-street').innerHTML = ''
-        }
-
-        let indexStreet = address.street.findIndex(item => item.code.substr(0, 6) === this.area.code.substr(0, 6))
-        if (indexStreet > -1) {
-            this.moveBox(1)
-            this.showStreet()
-        } else {
-            this.showBox(false)
-            this.saveValue()
-        }
-        this.setSelectValue()
-    },
-    /**
-    * 点击选择哪个镇
-    * @param {Object} e 事件对象
-    * @return {void}
-    */
-    clickStreet(e) {
-        console.log(e.target.dataset.code)
-        console.log(e.target.dataset.desc)
-        let streetArr = document.querySelectorAll('#cyui-input-street li')
-        for (let o of streetArr) {
-            o.classList.remove('on')
-        }
-        e.target.classList.add('on')
-        this.street = {
-            code: e.target.dataset.code,
-            desc: e.target.dataset.desc
-        }
-        this.setSelectValue()
-        this.showBox(false)
-        this.saveValue()
     },
     /**
      * 设置已选数据的显示
@@ -383,17 +298,17 @@ cyui.City.prototype = {
      */
     setSelectValue() {
         document.querySelector('.cyui-input-select').innerHTML = ''
-        let resultStr = `<div class="cyui-input-sel-btn ${transformNum === 0 ? 'on' : ''}" data-index="0">${ this.province.desc ? this.province.desc : '请选择'}</div>`
+        let resultStr = `<div class="cyui-input-sel-btn ${transformNum === 0 ? 'on' : ''}" data-index="0">${this.province.desc ? this.province.desc : '请选择'}</div>`
         if (transformNum >= 1 || this.province.desc) {
-            resultStr += `<div class="cyui-input-sel-btn ${transformNum === 1 ? 'on' : ''}" data-index="1">${ this.city.desc ? this.city.desc : '请选择'}</div>`
+            resultStr += `<div class="cyui-input-sel-btn ${transformNum === 1 ? 'on' : ''}" data-index="1">${this.city.desc ? this.city.desc : '请选择'}</div>`
         }
         if (transformNum >= 2 || this.city.desc) {
-            resultStr += `<div class="cyui-input-sel-btn ${transformNum === 2 ? 'on' : ''}" data-index="2">${ this.area.desc ? this.area.desc : '请选择'}</div>`
+            resultStr += `<div class="cyui-input-sel-btn ${transformNum === 2 ? 'on' : ''}" data-index="2">${this.area.desc ? this.area.desc : '请选择'}</div>`
         }
         if (transformNum >= 3 || this.area.desc) {
             let indexStreet = address.street.findIndex(item => item.code.substr(0, 6) === this.area.code.substr(0, 6))
             if (indexStreet > -1) {
-                resultStr += `<div class="cyui-input-sel-btn ${transformNum === 3 ? 'on' : ''}" data-index="3">${ this.street.desc ? this.street.desc : '请选择'}</div>`
+                resultStr += `<div class="cyui-input-sel-btn ${transformNum === 3 ? 'on' : ''}" data-index="3">${this.street.desc ? this.street.desc : '请选择'}</div>`
             }
         }
         document.querySelector('.cyui-input-select').innerHTML = resultStr
