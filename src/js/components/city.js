@@ -56,6 +56,7 @@ cyui.City.prototype = {
             document.querySelector('.cyui-input-dialog').classList.add('on')
             setTimeout(() => {
                 document.querySelector('.cyui-input-box').classList.add('on')
+                this.setSelectValue()
             })
         } else {
             document.querySelector('.cyui-input-box').classList.remove('on')
@@ -132,6 +133,17 @@ cyui.City.prototype = {
             transformNum--
         }
         document.querySelector('.cyui-input-ul-box').style.transform = 'translateX(' + -25 * transformNum + '%)'
+        this.setSelectValue()
+    },
+    /**
+     * 跳转显示选择框
+     * @param {Number} num 0,1,2,3表示要显示的页面
+     * @return {void}
+     */
+    toBox(num) {
+        transformNum = num
+        document.querySelector('.cyui-input-ul-box').style.transform = 'translateX(' + -25 * transformNum + '%)'
+        this.setSelectValue()
     },
     /**
      * 渲染省列表
@@ -251,8 +263,8 @@ cyui.City.prototype = {
             this.street = {}
         }
 
-        this.setSelectValue()
         this.moveBox(1)
+        this.setSelectValue()
         this.showCity()
     },
     /**
@@ -278,8 +290,8 @@ cyui.City.prototype = {
             this.street = {}
         }
 
-        this.setSelectValue()
         this.moveBox(1)
+        this.setSelectValue()
         this.showArea()
     },
     /**
@@ -304,7 +316,6 @@ cyui.City.prototype = {
             this.street = {}
         }
 
-        this.setSelectValue()
         let indexStreet = address.street.findIndex(item => item.code.substr(0, 6) === this.area.code.substr(0, 6))
         if (indexStreet > -1) {
             this.moveBox(1)
@@ -313,6 +324,7 @@ cyui.City.prototype = {
             this.showBox(false)
             this.saveValue()
         }
+        this.setSelectValue()
     },
     /**
     * 点击选择哪个镇
@@ -340,16 +352,35 @@ cyui.City.prototype = {
      * @return {void}
      */
     setSelectValue() {
-        let resultStr = this.province.desc ? this.province.desc : ''
-        resultStr += this.city.desc ? this.city.desc : ''
-        resultStr += this.area.desc ? this.area.desc : ''
-        resultStr += this.street.desc ? this.street.desc : ''
-        if (resultStr.length > 0) {
-            document.querySelector('.cyui-input-select').innerHTML = resultStr
-            document.querySelector('.cyui-input-select').style.display = 'block'
-        } else {
-            document.querySelector('.cyui-input-select').style.display = 'none'
+        document.querySelector('.cyui-input-select').innerHTML = ''
+        let resultStr = `<div class="cyui-input-sel-btn ${transformNum === 0 ? 'on' : ''}" data-index="0">${ this.province.desc ? this.province.desc : '请选择'}</div>`
+        if (transformNum >= 1 || this.province.desc) {
+            resultStr += `<div class="cyui-input-sel-btn ${transformNum === 1 ? 'on' : ''}" data-index="1">${ this.city.desc ? this.city.desc : '请选择'}</div>`
         }
+        if (transformNum >= 2 || this.city.desc) {
+            resultStr += `<div class="cyui-input-sel-btn ${transformNum === 2 ? 'on' : ''}" data-index="2">${ this.area.desc ? this.area.desc : '请选择'}</div>`
+        }
+        if (transformNum >= 3 || this.area.desc) {
+            let indexStreet = address.street.findIndex(item => item.code.substr(0, 6) === this.area.code.substr(0, 6))
+            if (indexStreet > -1) {
+                resultStr += `<div class="cyui-input-sel-btn ${transformNum === 3 ? 'on' : ''}" data-index="3">${ this.street.desc ? this.street.desc : '请选择'}</div>`
+            }
+        }
+        document.querySelector('.cyui-input-select').innerHTML = resultStr
+
+        let btnArr = document.querySelectorAll('.cyui-input-select .cyui-input-sel-btn')
+        for (let o of btnArr) {
+            o.onclick = e => this.changeSelectTab(e)
+        }
+    },
+    /**
+    * 为已选择的结果添加事件
+    * @param {Object} e 事件对象
+    * @return {void}
+    */
+    changeSelectTab(e) {
+        let num = parseInt(e.target.dataset.index)
+        this.toBox(num)
     },
     /**
     * 保存地址选择的值
