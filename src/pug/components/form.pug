@@ -62,15 +62,22 @@ block cc
                         .ui-input-box
                             .ui-input-in    
                                 input(type='text', placeholder='请输入手机号', data-verify='phone', data-required)
+
+        - var code = "var v = new cyui.Form({\n    dom: '#verfiyForm',\n    tipSkin: 1, // 表单样式，默认\n    trigger: 'input', // 校验方式，默认\n})\n\nvar v2 = new cyui.Form({\n    dom: '#verfiyForm2',\n    tipSkin: 2, // 表单样式\n    trigger: 'blur', // 校验方式\n})"
+        .demo-title 使用方法
+        .demo-code
+            .hl
+                pre
+                    code(class='language-js') #{code}
                 
     script.
         var v = new cyui.Form({
             dom: '#verfiyForm',
             tipSkin: 1, // 表单样式
-            trigger: 'input', // 触发校验方式，实时
+            trigger: 'input', // 校验方式，实时
         })
         var v2 = new cyui.Form({
             dom: '#verfiyForm2',
             tipSkin: 2, // 表单样式
-            trigger: 'input', // 触发校验方式，实时
+            trigger: 'input', // 校验方式，实时
         })
