@@ -14,7 +14,8 @@ cyui.City = function (args) {
     this.dom.querySelector('.cyui-input-input')?.addEventListener('click', () => this.showBox(true))
     document.querySelector('.cyui-input-close')?.addEventListener('click', () => this.showBox(false))
     document.querySelector('.cyui-input-ul-box')?.addEventListener('touchstart', e => this.scrollUlStart(e))
-    document.querySelector('.cyui-input-ul-box')?.addEventListener('touchend', e => this.scrollUlEnd(e)) 
+    document.querySelector('.cyui-input-ul-box')?.addEventListener('touchend', e => this.scrollUlEnd(e))
+    document.querySelector('.cyui-input-ul-box')?.addEventListener('touchmove', e => this.scrollUlMove(e))
 }
 
 cyui.City.prototype = {
@@ -50,7 +51,7 @@ cyui.City.prototype = {
      * @param {Boolean} show 是否显示弹窗
      * @return {void}
      */
-    showBox: function (show) {
+    showBox(show) {
         this.show = show
         if (this.show) {
             document.querySelector('.cyui-input-dialog').classList.add('on')
@@ -72,7 +73,6 @@ cyui.City.prototype = {
      * @return {void}
      */
     scrollUlStart(e) {
-        console.log(e)
         startX = e.touches[0].pageX
     },
     /**
@@ -81,39 +81,63 @@ cyui.City.prototype = {
      * @return {void}
      */
     scrollUlEnd(e) {
-        console.log(e)
         endX = e.changedTouches[0].pageX
         if (endX > startX) {
-            if (endX - startX > 100) {
+            if (endX - startX > 80) {
                 console.log('往右滑')
-                this.moveBox(0)
+                if (transformNum === 0) {
+                    this.toBox(transformNum)
+                } else {
+                    this.moveBox(0)
+                }
+            } else {
+                this.toBox(transformNum)
             }
         } else if (endX < startX) {
-            if (startX - endX > 100) {
+            if (startX - endX > 80) {
                 console.log('往左滑')
-                console.log(transformNum)
+                let isChange = true
                 if (transformNum === 0) {
                     if (!this.province.code) {
-                        return
+                        isChange = false
                     }
                 }
                 if (transformNum === 1) {
                     if (!this.city.code) {
-                        return
+                        isChange = false
                     }
                 }
                 if (transformNum === 2) {
                     if (!this.area.code) {
-                        return
+                        isChange = false
                     }
                     let indexStreet = address.street.findIndex(item => item.code.substr(0, 6) === this.area.code.substr(0, 6))
                     if (indexStreet <= -1) {
-                        return
+                        isChange = false
                     }
                 }
-                this.moveBox(1)
+                if (transformNum === 3) {
+                    isChange = false
+                }
+
+                if (isChange) {
+                    this.moveBox(1)
+                } else {
+                    this.toBox(transformNum)
+                }
+            } else {
+                this.toBox(transformNum)
             }
         }
+    },
+    /**
+     * 触摸事件，移动中
+     * @param {Object} e 事件对象
+     * @return {void}
+     */
+    scrollUlMove(e) {
+        let boxLeft = (startX - e.touches[0].clientX) / document.documentElement.clientWidth * 100
+        document.querySelector('.cyui-input-ul-box').setAttribute('style','transform:translateX('+(-25*transformNum-boxLeft/4)+'%)')
     },
     /**
      * 滑动选择框
@@ -149,7 +173,7 @@ cyui.City.prototype = {
      * 渲染省列表
      * @return {void}
      */
-    showProvince: function () {
+    showProvince() {
         document.querySelector('#cyui-input-province').innerHTML = ''
         for (let o of address.province) {
             let contentNode = document.createElement('li')
@@ -261,6 +285,9 @@ cyui.City.prototype = {
             this.city = {}
             this.area = {}
             this.street = {}
+            document.querySelector('#cyui-input-city').innerHTML = ''
+            document.querySelector('#cyui-input-area').innerHTML = ''
+            document.querySelector('#cyui-input-street').innerHTML = ''
         }
 
         this.moveBox(1)
@@ -288,6 +315,8 @@ cyui.City.prototype = {
             }
             this.area = {}
             this.street = {}
+            document.querySelector('#cyui-input-area').innerHTML = ''
+            document.querySelector('#cyui-input-street').innerHTML = ''
         }
 
         this.moveBox(1)
@@ -314,6 +343,7 @@ cyui.City.prototype = {
                 desc: e.target.dataset.desc
             }
             this.street = {}
+            document.querySelector('#cyui-input-street').innerHTML = ''
         }
 
         let indexStreet = address.street.findIndex(item => item.code.substr(0, 6) === this.area.code.substr(0, 6))
