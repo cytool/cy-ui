@@ -1,7 +1,9 @@
 var cyui = {}
 let startX
+let startY
 let endX
 let transformNum = 0
+let isMove = false
 
 cyui.City = function (args) {
     this.createDom()
@@ -74,6 +76,7 @@ cyui.City.prototype = {
      */
     scrollUlStart(e) {
         startX = e.touches[0].pageX
+        startY = e.touches[0].pageY
     },
     /**
      * 触摸结束事件，记录触摸结束位置，判断滑动方向
@@ -81,6 +84,9 @@ cyui.City.prototype = {
      * @return {void}
      */
     scrollUlEnd(e) {
+        if (!isMove) {
+            return
+        }
         endX = e.changedTouches[0].pageX
         if (endX > startX) {
             if (endX - startX > 80) {
@@ -136,6 +142,34 @@ cyui.City.prototype = {
      * @return {void}
      */
     scrollUlMove(e) {
+        if (Math.abs(e.touches[0].clientY - startY) / Math.abs(e.touches[0].clientX - startX) > 0.5) {
+            isMove = false
+            return
+        }
+        if (e.touches[0].clientX - startX > 0) {
+            if (transformNum <= 0) {
+                isMove = false
+                return
+            }
+        } else if (e.touches[0].clientX - startX < 0) {
+            if (transformNum == 0 && typeof this.province.desc === 'undefined') {
+                isMove = false
+                return
+            }
+            if (transformNum == 1 && typeof this.city.desc === 'undefined') {
+                isMove = false
+                return
+            }
+            if (transformNum == 2 && (typeof this.area.desc === 'undefined' || address.street.findIndex(item => item.code.substr(0, 6) === this.area.code.substr(0, 6)) == -1)) {
+                isMove = false
+                return
+            }
+            if (transformNum === 3) {
+                isMove = false
+                return
+            }
+        }
+        isMove = true
         let boxLeft = (startX - e.touches[0].clientX) / document.documentElement.clientWidth * 100
         document.querySelector('.cyui-input-ul-box').setAttribute('style', 'transform:translateX(' + (-25 * transformNum - boxLeft / 4) + '%)')
     },
