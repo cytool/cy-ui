@@ -1,9 +1,4 @@
 var cyui = {}
-let startX
-let startY
-let endX
-let transformNum = 0
-let isMove = false
 
 cyui.City = function (args) {
     this.createDom()
@@ -13,11 +8,25 @@ cyui.City = function (args) {
     this.city = {}
     this.area = {}
     this.street = {}
+    
+    this.startX = 0
+    this.startY = 0
+    this.transformNum = 0
+    this.isSlide = false
+    this.isMove = false
+    this.startYIOS = 0
     this.dom.querySelector('.cyui-input-input')?.addEventListener('click', () => this.showBox(true))
     document.querySelector('.cyui-input-close')?.addEventListener('click', () => this.showBox(false))
     document.querySelector('.cyui-input-ul-box')?.addEventListener('touchstart', e => this.scrollUlStart(e))
     document.querySelector('.cyui-input-ul-box')?.addEventListener('touchend', e => this.scrollUlEnd(e))
     document.querySelector('.cyui-input-ul-box')?.addEventListener('touchmove', e => this.scrollUlMove(e))
+    if (this.isIOS()) {
+        let domArr = document.querySelectorAll('.cyui-input-ul')
+        for (let o of domArr) {
+            o.addEventListener('touchstart', e => this.touchStartIOS(e))
+            o.addEventListener('touchmove', e => this.touchMoveIOS(e))
+        }
+    }
 }
 
 cyui.City.prototype = {
@@ -75,8 +84,8 @@ cyui.City.prototype = {
      * @return {void}
      */
     scrollUlStart(e) {
-        startX = e.touches[0].pageX
-        startY = e.touches[0].pageY
+        this.startX = e.touches[0].pageX
+        this.startY = e.touches[0].pageY
     },
     /**
      * 触摸结束事件，记录触摸结束位置，判断滑动方向
@@ -84,36 +93,38 @@ cyui.City.prototype = {
      * @return {void}
      */
     scrollUlEnd(e) {
-        if (!isMove) {
+        this.isMove = true
+        if (!this.isSlide) {
+            this.toBox(this.transformNum)
             return
         }
-        endX = e.changedTouches[0].pageX
-        if (endX > startX) {
-            if (endX - startX > 80) {
+        let endX = e.changedTouches[0].pageX
+        if (endX > this.startX) {
+            if (endX - this.startX > 80) {
                 console.log('往右滑')
-                if (transformNum === 0) {
-                    this.toBox(transformNum)
+                if (this.transformNum === 0) {
+                    this.toBox(this.transformNum)
                 } else {
                     this.moveBox(0)
                 }
             } else {
-                this.toBox(transformNum)
+                this.toBox(this.transformNum)
             }
-        } else if (endX < startX) {
-            if (startX - endX > 80) {
+        } else if (endX < this.startX) {
+            if (this.startX - endX > 80) {
                 console.log('往左滑')
                 let isChange = true
-                if (transformNum === 0) {
+                if (this.transformNum === 0) {
                     if (!this.province.code) {
                         isChange = false
                     }
                 }
-                if (transformNum === 1) {
+                if (this.transformNum === 1) {
                     if (!this.city.code) {
                         isChange = false
                     }
                 }
-                if (transformNum === 2) {
+                if (this.transformNum === 2) {
                     if (!this.area.code) {
                         isChange = false
                     }
@@ -122,17 +133,17 @@ cyui.City.prototype = {
                         isChange = false
                     }
                 }
-                if (transformNum === 3) {
+                if (this.transformNum === 3) {
                     isChange = false
                 }
 
                 if (isChange) {
                     this.moveBox(1)
                 } else {
-                    this.toBox(transformNum)
+                    this.toBox(this.transformNum)
                 }
             } else {
-                this.toBox(transformNum)
+                this.toBox(this.transformNum)
             }
         }
     },
@@ -142,36 +153,40 @@ cyui.City.prototype = {
      * @return {void}
      */
     scrollUlMove(e) {
-        if (Math.abs(e.touches[0].clientY - startY) / Math.abs(e.touches[0].clientX - startX) > 0.5) {
-            isMove = false
+        if (!this.isMove) {
             return
         }
-        if (e.touches[0].clientX - startX > 0) {
-            if (transformNum <= 0) {
-                isMove = false
+        if (Math.abs(e.touches[0].clientY - this.startY) / Math.abs(e.touches[0].clientX - this.startX) > 0.5) {
+            this.isSlide = false
+            this.isMove = false
+            return
+        }
+        if (e.touches[0].clientX - this.startX > 0) {
+            if (this.transformNum <= 0) {
+                this.isSlide = false
                 return
             }
-        } else if (e.touches[0].clientX - startX < 0) {
-            if (transformNum == 0 && typeof this.province.desc === 'undefined') {
-                isMove = false
+        } else if (e.touches[0].clientX - this.startX < 0) {
+            if (this.transformNum == 0 && typeof this.province.desc === 'undefined') {
+                this.isSlide = false
                 return
             }
-            if (transformNum == 1 && typeof this.city.desc === 'undefined') {
-                isMove = false
+            if (this.transformNum == 1 && typeof this.city.desc === 'undefined') {
+                this.isSlide = false
                 return
             }
-            if (transformNum == 2 && (typeof this.area.desc === 'undefined' || address.street.findIndex(item => item.code.substr(0, 6) === this.area.code.substr(0, 6)) == -1)) {
-                isMove = false
+            if (this.transformNum == 2 && (typeof this.area.desc === 'undefined' || address.street.findIndex(item => item.code.substr(0, 6) === this.area.code.substr(0, 6)) == -1)) {
+                this.isSlide = false
                 return
             }
-            if (transformNum === 3) {
-                isMove = false
+            if (this.transformNum === 3) {
+                this.isSlide = false
                 return
             }
         }
-        isMove = true
-        let boxLeft = (startX - e.touches[0].clientX) / document.documentElement.clientWidth * 100
-        document.querySelector('.cyui-input-ul-box').setAttribute('style', 'transform:translateX(' + (-25 * transformNum - boxLeft / 4) + '%)')
+        this.isSlide = true
+        let boxLeft = (this.startX - e.touches[0].clientX) / document.documentElement.clientWidth * 100
+        document.querySelector('.cyui-input-ul-box').setAttribute('style', 'transform:translateX(' + (-25 * this.transformNum - boxLeft / 4) + '%)')
     },
     /**
      * 滑动选择框
@@ -180,17 +195,17 @@ cyui.City.prototype = {
      */
     moveBox(dir) {
         if (dir) {
-            if (transformNum >= 3) {
+            if (this.transformNum >= 3) {
                 return
             }
-            transformNum++
+            this.transformNum++
         } else {
-            if (transformNum <= 0) {
+            if (this.transformNum <= 0) {
                 return
             }
-            transformNum--
+            this.transformNum--
         }
-        document.querySelector('.cyui-input-ul-box').style.transform = 'translateX(' + -25 * transformNum + '%)'
+        document.querySelector('.cyui-input-ul-box').style.transform = 'translateX(' + -25 * this.transformNum + '%)'
         this.setSelectValue()
     },
     /**
@@ -199,8 +214,8 @@ cyui.City.prototype = {
      * @return {void}
      */
     toBox(num) {
-        transformNum = num
-        document.querySelector('.cyui-input-ul-box').style.transform = 'translateX(' + -25 * transformNum + '%)'
+        this.transformNum = num
+        document.querySelector('.cyui-input-ul-box').style.transform = 'translateX(' + -25 * this.transformNum + '%)'
         this.setSelectValue()
     },
     /**
@@ -332,17 +347,17 @@ cyui.City.prototype = {
      */
     setSelectValue() {
         document.querySelector('.cyui-input-select').innerHTML = ''
-        let resultStr = `<div class="cyui-input-sel-btn ${transformNum === 0 ? 'on' : ''}" data-index="0">${this.province.desc ? this.province.desc : '请选择'}</div>`
-        if (transformNum >= 1 || this.province.desc) {
-            resultStr += `<div class="cyui-input-sel-btn ${transformNum === 1 ? 'on' : ''}" data-index="1">${this.city.desc ? this.city.desc : '请选择'}</div>`
+        let resultStr = `<div class="cyui-input-sel-btn ${this.transformNum === 0 ? 'on' : ''}" data-index="0">${this.province.desc ? this.province.desc : '请选择'}</div>`
+        if (this.transformNum >= 1 || this.province.desc) {
+            resultStr += `<div class="cyui-input-sel-btn ${this.transformNum === 1 ? 'on' : ''}" data-index="1">${this.city.desc ? this.city.desc : '请选择'}</div>`
         }
-        if (transformNum >= 2 || this.city.desc) {
-            resultStr += `<div class="cyui-input-sel-btn ${transformNum === 2 ? 'on' : ''}" data-index="2">${this.area.desc ? this.area.desc : '请选择'}</div>`
+        if (this.transformNum >= 2 || this.city.desc) {
+            resultStr += `<div class="cyui-input-sel-btn ${this.transformNum === 2 ? 'on' : ''}" data-index="2">${this.area.desc ? this.area.desc : '请选择'}</div>`
         }
-        if (transformNum >= 3 || this.area.desc) {
+        if (this.transformNum >= 3 || this.area.desc) {
             let indexStreet = address.street.findIndex(item => item.code.substr(0, 6) === this.area.code.substr(0, 6))
             if (indexStreet > -1) {
-                resultStr += `<div class="cyui-input-sel-btn ${transformNum === 3 ? 'on' : ''}" data-index="3">${this.street.desc ? this.street.desc : '请选择'}</div>`
+                resultStr += `<div class="cyui-input-sel-btn ${this.transformNum === 3 ? 'on' : ''}" data-index="3">${this.street.desc ? this.street.desc : '请选择'}</div>`
             }
         }
         document.querySelector('.cyui-input-select').innerHTML = resultStr
@@ -373,5 +388,62 @@ cyui.City.prototype = {
         resultStr += this.street.desc ? this.street.desc : ''
         this.dom.querySelector('.cyui-input-input').innerHTML = resultStr
         this.dom.querySelector('.cyui-input-input').classList.add('on')
+    },
+    /**
+    * 是否IOS
+    * @return {void}
+    */
+    isIOS() {
+        if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
+            console.log('ios')
+            return true
+        } else if (/(Android)/i.test(navigator.userAgent)) {
+            console.log('android')
+            return false
+        } else {
+            console.log('other')
+            return false
+        }
+    },
+    /**
+     * IOS 下拉带动的兼容处理 start事件
+     * @param {Object} evt 事件对象 
+     * @return {void}
+     */
+    touchStartIOS(evt) {
+        let e = evt || window.event
+        this.startYIOS = e.changedTouches[0].pageY
+    },
+    /**
+     * IOS 下拉带动的兼容处理 move事件
+     * @param {Object} evt 事件对象 
+     * @return {void}
+     */
+    touchMoveIOS(evt) {
+        let e = evt || window.event
+        let currentY = e.touches[0].clientY // 当前触摸的位置y坐标
+        let domArr = document.querySelectorAll('.cyui-input-ul')
+        let el = domArr[this.transformNum]
+        let scrollTop = el.scrollTop // 当前滚动条距离顶部的距离
+        let status = '11' // 记录当前可滚动状态，高位表示向上滚动, 底位表示向下滚动: 1容许 0禁止
+        let offsetHeight = el.clientHeight // 容器高度
+        let scrollHeight = el.scrollHeight // 内容总高度
+
+        if (scrollTop === 0) {
+            status = offsetHeight >= scrollHeight ? '00' : '01'
+        } else if (scrollTop + offsetHeight >= scrollHeight) {
+            status = '10'
+        }
+
+        if (status != '11') {
+            var direction = currentY - this.startYIOS > 0 ? '10' : '01'
+            if (!(parseInt(status, 2) & parseInt(direction, 2))) {
+                console.log('到顶了或者到底了')
+                e.preventDefault();
+                e.stopPropagation();
+                return;
+            }    
+        }
+        this.startYIOS = currentY
     }
 }
