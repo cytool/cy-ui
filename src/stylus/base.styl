@@ -1,5 +1,6 @@
 @import '_/_common'
 @import '_/_reset'
+@import 'components/common'
 
 .demo
     padding 20px
@@ -7,6 +8,7 @@
     .demo-item
         border 0.5px solid rgb(3, 169, 243)
         border-radius 0 0 3px
+        font-size 14px
         margin-bottom 20px
         padding 20px
 
@@ -16,6 +18,12 @@
         color #fff
         font-size 14px
         padding 10px
+
+    .demo-code
+        margin-bottom 20px
+
+    .demo-table
+        line-height 1.5
 
 .wrapper
     bottom 0
@@ -30,3 +38,26 @@
 .txt
     color #333
     font-size 15px
+
+.cyui-input-row
+    background #fff
+    display flex
+    flex-direction row
+    padding 10px
+
+.cyui-input-label
+    color #333
+    font-size 14px
+
+.cyui-input-input
+    color #ccc
+    flex 1
+    font-size 14px
+    overflow hidden
+    padding 0 10px
+    text-overflow ellipsis
+    white-space nowrap
+
+    &.on
+        color #333
+        font-weight bold

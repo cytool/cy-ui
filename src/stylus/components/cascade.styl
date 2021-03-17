@@ -1,0 +1,86 @@
+.cyui-cascade-dialog
+    bottom 0
+    display none
+    left 0
+    position fixed
+    top 50%
+    width 100%
+
+    &.on
+        display block
+
+.cyui-cascade-box
+    background #fff
+    border-radius 12px 12px 0 0
+    display flex
+    flex-direction column
+    height 100%
+    position relative
+    transform translateY(100%)
+    transition all 0.3s
+    width 100%
+    z-index 1001
+
+    &.on
+        transform translateY(0)
+
+.cyui-cascade-card
+    flex 1
+    overflow hidden
+    width 100%
+
+.cyui-cascade-content
+    display flex
+    transform translateX(0)
+    transition all 0.3s
+
+.cyui-cascade-item
+    box-sizing border-box
+    flex-shrink 0
+    overflow-y auto
+    padding 0 15px
+    width 100%
+
+    li
+        font-size 14px
+        height 36px
+        line-height 36px
+
+        &.on
+            color red
+
+.cyui-cascade-select
+    color #333
+    display flex
+    flex-wrap wrap
+    font-size 16px
+    margin 0 15px
+
+    span[data-label='请选择']
+        color #999
+
+    span.on
+        &:after
+            background-color red
+
+    span
+        display inline-block
+        line-height 40px
+        margin-right 15px
+        position relative
+        text-align center
+        vertical-align middle
+
+        &:after
+            background-color transparent
+            content ''
+            display block
+            height 2px
+            margin auto
+            width 1.5em
+
+.cyui-cascade-sel-btn
+    margin-right 20px
+
+    &.on
+        color red

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>CYTOOL-UI组件库</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta content="telephone=no" name="format-detection">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/assets/hl/prism.css">
+    <script src="/assets/hl/prism.js"></script>
+    <link rel="stylesheet" href="/css/components/city.css"/>
+    <script src="/js/components/city.js"></script>
+  </head>
+  <body>
+    <div class="demo">
+      <h1 class="demo-title">地址选择</h1>
+      <div class="demo-item" id="exampleCity">
+        <div class="cyui-input-row">
+          <div class="cyui-input-label">所在地区</div>
+          <div class="cyui-input-input">省市区县、乡镇等</div>
+        </div>
+      </div>
+    </div>
+    <script>
+      var v = new cyui.City({
+          dom: '#exampleCity',
+      })
+    </script>
+  </body>
+</html>

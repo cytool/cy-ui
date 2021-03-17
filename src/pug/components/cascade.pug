@@ -1,9 +1,9 @@
 extends ../_tpl/_base.pug
 
 block css
-    +css(['components/city'])
+    +css(['components/cascade'])
 block js
-    +js(['components/city'])
+    +js(['components/cascade'])
 
 block cc
     
@@ -15,5 +15,5 @@ block cc
                 .cyui-input-input 省市区县、乡镇等
     script.
         var v = new cyui.City({
-            dom: '#exampleCity',
+            trigger: '#exampleCity',
         })

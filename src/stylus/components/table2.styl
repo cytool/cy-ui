@@ -1,0 +1,39 @@
+.cyui-table-container
+    overflow auto
+    position relative
+    width 100%
+
+    &[data-border]
+        .cyui-table, .tr, .td, .th
+            border 0.5px solid #eee
+
+    &[data-fixhead]
+        .th
+            left 0
+            position sticky
+            top 0
+            z-index 1
+
+    &[data-fixcol]
+        .td:first-child
+            left 0
+            position sticky
+            z-index 2
+
+        .th:first-child
+            left 0
+            position sticky
+            z-index 3
+
+    .cyui-table
+        display table
+        width 100%
+
+        .tr
+            display table-row
+
+        .td, .th
+            background-color #fff
+            display table-cell
+            padding 10px
+            word-break break-all

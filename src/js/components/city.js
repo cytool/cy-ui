@@ -8,7 +8,7 @@ cyui.City = function (args) {
     this.city = {}
     this.area = {}
     this.street = {}
-    
+
     this.startX = 0
     this.startY = 0
     this.transformNum = 0
@@ -442,7 +442,7 @@ cyui.City.prototype = {
                 e.preventDefault();
                 e.stopPropagation();
                 return;
-            }    
+            }
         }
         this.startYIOS = currentY
     }
