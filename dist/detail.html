@@ -8,13 +8,12 @@
     <meta name="description" content="">
     <meta content="telephone=no" name="format-detection">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-    <base href="/cy-ui/dist/">
-    <link rel="stylesheet" href="/css/base.css">
-    <link rel="stylesheet" href="/assets/hl/prism.css">
-    <script src="/assets/hl/prism.js"></script>
-    <link rel="stylesheet" href="/css/detail.css"/>
-    <link rel="stylesheet" href="/css/components/drawer.css"/>
-    <script src="/js/components/drawer.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/themes/prism-solarizedlight.css">
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/prism.min.js"></script>
+    <link rel="stylesheet" href="css/base.css"/>
+    <link rel="stylesheet" href="css/detail.css"/>
+    <link rel="stylesheet" href="css/components/drawer.css"/>
+    <script src="js/components/drawer.js"></script>
   </head>
   <body>
     <div class="wrapper">
@@ -23,11 +22,11 @@
       </div>
       <div class="ui-drawer">
         <ul class="nav">
-          <li><a href="/">home</a></li>
-          <li><a href="/detail.html?type=form">form</a></li>
-          <li><a href="/detail.html?type=drawer">drawer</a></li>
-          <li><a href="/detail.html?type=drawer">city</a></li>
-          <li><a href="/detail.html?type=drawer">picker</a></li>
+          <li><a href="index.html">home</a></li>
+          <li><a href="detail.html?type=form">form</a></li>
+          <li><a href="detail.html?type=drawer">drawer</a></li>
+          <li><a href="detail.html?type=drawer">city</a></li>
+          <li><a href="detail.html?type=table2">table2</a></li>
         </ul>
       </div>
       <script>
@@ -37,12 +36,12 @@
         })
       </script>
       <div class="flex">
-        <iframe> </iframe>
+        <iframe></iframe>
       </div>
     </div>
     <script>
       var type = location.search.replace(/\?type=/, '')
-      var src = `/components/${type}.html`
+      var src = `components/${type}.html`
       document.querySelector('iframe').setAttribute('src', src)
     </script>
   </body>

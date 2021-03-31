@@ -2,23 +2,23 @@ extends _tpl/_base.pug
 
 
 block css
-    +css(['detail', 'components/drawer'])
+    +css(['css/base', 'css/detail', 'css/components/drawer'])
 block js
-    +js(['components/drawer'])
+    +js(['js/components/drawer'])
 
 block cc
     
     .wrapper
         include _tpl/_head.pug
         .flex
-            iframe 
+            iframe
         
 
 
 
     script.
         var type = location.search.replace(/\?type=/, '')
-        var src = `/components/${type}.html`
+        var src = `components/${type}.html`
         document.querySelector('iframe').setAttribute('src', src)
 
         
