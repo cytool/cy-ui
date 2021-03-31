@@ -2,6 +2,10 @@
 @import '_/_reset'
 @import 'components/common'
 
+body
+    margin auto
+    max-width 750px
+
 .demo
     padding 20px
 
@@ -10,17 +14,26 @@
         border-radius 0 0 3px
         font-size 14px
         margin-bottom 20px
-        padding 20px
+        padding 10px
 
-    .demo-title
+    .demo-title, .demo-code-title
         background-color rgb(3, 169, 243)
         border-radius 3px 3px 0 0
         color #fff
         font-size 14px
         padding 10px
 
-    .demo-code
-        margin-bottom 20px
+    .demo-code-title
+        background-color #74b582
+        margin-top 10px
+
+    .demo-title-sub
+        background-color rgb(3, 169, 243)
+        border-radius 3px 3px 0 0
+        color #fff
+        font-size 12px
+        padding 5px 10px
+        padding-top 0
 
     .demo-table
         line-height 1.5

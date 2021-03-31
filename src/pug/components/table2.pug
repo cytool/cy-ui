@@ -8,280 +8,319 @@ block js
 block cc
     
     .demo.demo-table
-        .demo-title 表格示例 - 基础表格
+        .demo-title 基础表格
         .demo-item
             .cyui-table-container(data-border)
                 .cyui-table
                     .tr
                         .th 姓名
                         .th 性别
-                        .th 电话
-                        .th 地址
-                        .th 备注
-                
+                        .th 地址 
                     .tr
                         .td 乌拉拉
-                        .td 男
-                        .td 12345678910
-                        .td 厦门创想中心B座1801
-                        .td 是一枚帅哥
+                        .td 男 
+                        .td 北京西城区中南海 
+                    .tr
+                        .td 乌拉拉
+                        .td 男 
+                        .td 北京西城区中南海 
                    
 
-        .demo-title 表格示例 - 基础表格 - 使用方法
-        .demo-code#base-table
-            .hl
-                pre
-                    code(class='language-pug')
-
-
-        .demo-title 表格示例 - X轴滚动
+            .demo-code-title 使用方法
+            .demo-code#table-base
+                .hl
+                    pre
+                        code(class='language-pug')
+        
+        .demo-title 基础表格 - 条纹
         .demo-item
-            .cyui-table-container(data-border)
-                .cyui-table(style='width: 600px;')
+            .cyui-table-container(data-stripe)
+                .cyui-table
                     .tr
-                        .th(style='width: 100px') 姓名
+                        .th 姓名
                         .th 性别
-                        .th 电话
                         .th 地址
-                        .th 备注
-                
                     .tr
                         .td 乌拉拉
-                        .td 男
-                        .td 12345678910
-                        .td 厦门创想中心B座1801
-                        .td 是一枚帅哥
-                    
+                        .td 男 
+                        .td 北京西城区中南海 
+                    .tr
+                        .td 乌拉拉
+                        .td 男 
+                        .td 北京西城区中南海 
+                    .tr
+                        .td 乌拉拉
+                        .td 男 
+                        .td 北京西城区中南海 
+                   
 
-        - var xcode = ".cyui-table-container\n    .cyui-table(style='width: 800px')\n        ..."
-        .demo-title 表格示例 - X轴滚动 - 使用方法
-        .demo-code#base-table
-            .hl
-                pre
-                    code(class='language-pug') #{xcode}
+            .demo-code-title 使用方法
+            .demo-code#table-stripe
+                .hl
+                    pre
+                        code(class='language-pug')
 
-        .demo-title 表格示例 - Y轴滚动
+
+        .demo-title 基础表格 - 线条之横线
+        .demo-item
+            .cyui-table-container(data-line-x)
+                .cyui-table
+                    .tr
+                        .th 姓名
+                        .th 性别
+                        .th 地址
+                    .tr
+                        .td 乌拉拉
+                        .td 男 
+                        .td 北京西城区中南海
+
+            .demo-code-title 使用方法
+            .demo-code#table-line-x
+                .hl
+                    pre
+                        code(class='language-pug')
+
+        .demo-title 基础表格 - 线条之竖线
+        .demo-item
+            .cyui-table-container(data-line-y)
+                .cyui-table
+                    .tr
+                        .th 姓名
+                        .th 性别
+                        .th 地址
+                    .tr
+                        .td 乌拉拉
+                        .td 男 
+                        .td 北京西城区中南海
+
+            .demo-code-title 使用方法
+            .demo-code#table-line-y
+                .hl
+                    pre
+                        code(class='language-pug')
+
+
+        .demo-title X轴滚动
+        .demo-item
+            .cyui-table-container(data-border)
+                .cyui-table(style='width: 150%')
+                    .tr
+                        .th 姓名
+                        .th 性别
+                        .th 地址
+                    .tr
+                        .td 乌拉拉
+                        .td 男 
+                        .td 北京西城区中南海
+         
+            .demo-code-title 使用方法
+            .demo-code#table-x
+                .hl
+                    pre
+                        code(class='language-pug')
+
+        .demo-title Y轴滚动
         .demo-item
             .cyui-table-container(data-border, style='height: 250px')
                 .cyui-table
                     .tr
-                        .th(style='width: 100px') 姓名
+                        .th 姓名
                         .th 性别
-                        .th 电话
                         .th 地址
-                        .th 备注
-                
                     .tr
                         .td 乌拉拉
                         .td 男
-                        .td 12345678910
-                        .td 厦门创想中心B座1801
-                        .td 是一枚帅哥
-                    .tr
-                        .td 乌拉拉二号
-                        .td 男
-                        .td 
-                        .td 厦门湖里区创想中心B座1801
-                        .td 低头走路的人只看到大地的厚重，却忽略了高空的高远；抬头走路的人，只看到高空的广阔，却忽略了脚下的艰辛与险峻。
+                        .td 北京西城区中南海
                     .tr
                         .td 乌拉拉
                         .td 男
-                        .td 12345678910
-                        .td 厦门创想中心B座1801
-                        .td 是一枚帅哥
-                    .tr
-                        .td 乌拉拉二号
-                        .td 男
-                        .td 
-                        .td 厦门湖里区创想中心B座1801
-                        .td 低头走路的人只看到大地的厚重，却忽略了高空的高远；抬头走路的人，只看到高空的广阔，却忽略了脚下的艰辛与险峻。
+                        .td 北京西城区中南海
                     .tr
                         .td 乌拉拉
                         .td 男
-                        .td 12345678910
-                        .td 厦门创想中心B座1801
-                        .td 是一枚帅哥
+                        .td 北京西城区中南海
                     .tr
-                        .td 乌拉拉二号
+                        .td 乌拉拉
                         .td 男
-                        .td 
-                        .td 厦门湖里区创想中心B座1801
-                        .td 低头走路的人只看到大地的厚重，却忽略了高空的高远；抬头走路的人，只看到高空的广阔，却忽略了脚下的艰辛与险峻。
+                        .td 北京西城区中南海
+                    .tr
+                        .td 乌拉拉
+                        .td 男
+                        .td 北京西城区中南海
+                    .tr
+                        .td 乌拉拉
+                        .td 男
+                        .td 北京西城区中南海
+                    .tr
+                        .td 乌拉拉
+                        .td 男
+                        .td 北京西城区中南海
+                    .tr
+                        .td 乌拉拉
+                        .td 男
+                        .td 北京西城区中南海                    
 
-        - var ycode = ".cyui-table-container(style='height: 250px')\n    .cyui-table\n        ..."
-        .demo-title 表格示例 - Y轴滚动 - 使用方法
-        .demo-code#base-table
-            .hl
-                pre
-                    code(class='language-pug') #{ycode}
+            .demo-code-title 使用方法
+            .demo-code#table-y
+                .hl
+                    pre
+                        code(class='language-pug') 
 
 
-        .demo-title 表格示例 - 固定表头
+        .demo-title 固定表头
         .demo-item
             .cyui-table-container(data-border, data-fixhead, style='height: 250px')
                 .cyui-table
                     .tr
-                        .th(style='width: 100px ') 姓名
-                        .th 性别
-                        .th 电话
-                        .th 地址
-                        .th 备注
+                        .th 姓名
+                        .th 性别 
+                        .th 地址 
                     .tr
                         .td 乌拉拉
-                        .td 男
-                        .td 12345678910
-                        .td 厦门创想中心B座1801
-                        .td 是一枚帅哥
-                    .tr
-                        .td 乌拉拉二号
-                        .td 男
-                        .td 
-                        .td 厦门湖里区创想中心B座1801
-                        .td 低头走路的人只看到大地的厚重，却忽略了高空的高远；抬头走路的人，只看到高空的广阔，却忽略了脚下的艰辛与险峻。
+                        .td 男 
+                        .td 北京西城区中南海 
                     .tr
                         .td 乌拉拉
-                        .td 男
-                        .td 12345678910
-                        .td 厦门创想中心B座1801
-                        .td 是一枚帅哥
-                    .tr
-                        .td 乌拉拉二号
-                        .td 男
-                        .td 
-                        .td 厦门湖里区创想中心B座1801
-                        .td 低头走路的人只看到大地的厚重，却忽略了高空的高远；抬头走路的人，只看到高空的广阔，却忽略了脚下的艰辛与险峻。
+                        .td 男 
+                        .td 北京西城区中南海 
                     .tr
                         .td 乌拉拉
-                        .td 男
-                        .td 12345678910
-                        .td 厦门创想中心B座1801
-                        .td 是一枚帅哥
+                        .td 男 
+                        .td 北京西城区中南海 
                     .tr
-                        .td 乌拉拉二号
-                        .td 男
-                        .td 
-                        .td 厦门湖里区创想中心B座1801
-                        .td 低头走路的人只看到大地的厚重，却忽略了高空的高远；抬头走路的人，只看到高空的广阔，却忽略了脚下的艰辛与险峻。
+                        .td 乌拉拉
+                        .td 男 
+                        .td 北京西城区中南海 
+                    .tr
+                        .td 乌拉拉
+                        .td 男 
+                        .td 北京西城区中南海 
+                    .tr
+                        .td 乌拉拉
+                        .td 男 
+                        .td 北京西城区中南海 
+                    .tr
+                        .td 乌拉拉
+                        .td 男 
+                        .td 北京西城区中南海 
+                    .tr
+                        .td 乌拉拉
+                        .td 男 
+                        .td 北京西城区中南海 
+                    .tr
+                        .td 乌拉拉
+                        .td 男 
+                        .td 北京西城区中南海 
+                    
+    
+            .demo-code-title 使用方法
+            .demo-code#table-fixhead
+                .hl
+                    pre
+                        code(class='language-pug')
 
-        - var fixheadcode = ".cyui-table-container(data-fixhead)\n    .cyui-table\n        ..."
-        .demo-title 表格示例 - 固定表头 - 使用方法
-        .demo-code#base-table
-            .hl
-                pre
-                    code(class='language-pug') #{fixheadcode}
-
-        .demo-title 表格示例 - 固定列
+        .demo-title 固定列
         .demo-item
             .cyui-table-container(data-border, data-fixcol)
-                .cyui-table(style='width: 800px')
+                .cyui-table(style='width: 150%')
                     .tr
-                        .th(style='width: 100px ') 姓名
-                        .th 性别
-                        .th 电话
+                        .th 姓名
+                        .th 性别              
                         .th 地址
-                        .th 备注
                     .tr
                         .td 乌拉拉
                         .td 男
-                        .th 电话
-                        .th 地址
-                        .th 备注
+                        .td 北京西城区中南海
                     .tr
                         .td 乌拉拉
                         .td 男
-                        .td 12345678910
-                        .td 厦门创想中心B座1801
-                        .td 是一枚帅哥
+                        .td 北京西城区中南海
                     .tr
-                        .td 乌拉拉二号
+                        .td 乌拉拉
                         .td 男
-                        .td 
-                        .td 厦门湖里区创想中心B座1801
-                        .td 低头走路的人只看到大地的厚重，却忽略了高空的高远；抬头走路的人，只看到高空的广阔，却忽略了脚下的艰辛与险峻。
+                        .td 北京西城区中南海
+                  
 
-        - var fixheadcode = ".cyui-table-container(data-fixcol)\n    .cyui-table\n        ..."
-        .demo-title 表格示例 - 固定列 - 使用方法
-        .demo-code#base-table
-            .hl
-                pre
-                    code(class='language-pug') #{fixheadcode}
+            .demo-code-title 使用方法
+            .demo-code#table-fixcol
+                .hl
+                    pre
+                        code(class='language-pug') 
 
 
-        .demo-title 表格示例 - 固定列
+        .demo-title 固定2列
         .demo-item
             .cyui-table-container(data-border, data-fixcol)
-                .cyui-table(style='width: 800px')
+                .cyui-table(style='width: 150%')
                     .tr
-                        .th(style='width: 100px ') 姓名
-                        .th 性别
-                        .th 电话
+                        .th(data-fixcol-item, style='width: 70px; left: 0px') 姓名
+                        .th(data-fixcol-item, style='width: 50px; left: 70px') 性别
                         .th 地址
-                        .th 备注
+      
                     .tr                
-                        .td 乌拉拉
-                        .td 男
-                        .td 12345678910
-                        .td 厦门创想中心B座1801
-                        .td 是一枚帅哥
-                    .tr
-                        .td 乌拉拉
-                        .td 男
-                        .td 
-                        .td 厦门湖里区创想中心B座1801
+                        .td(data-fixcol-item, style='left: 0') 乌拉拉
+                        .td(data-fixcol-item, style='left: 70px') 男
                         .td 低头走路的人只看到大地的厚重，却忽略了高空的高远；抬头走路的人，只看到高空的广阔，却忽略了脚下的艰辛与险峻。
+        
+                    .tr
+                        .td(data-fixcol-item, style='left: 0') 乌拉拉
+                        .td(data-fixcol-item, style='left: 70px') 男
+                        .td 低头走路的人只看到大地的厚重，却忽略了高空的高远；抬头走路的人，只看到高空的广阔，却忽略了脚下的艰辛与险峻。
+            
+
+            .demo-code-title 使用方法
+            .demo-code#table-fixcol-2
+                .hl
+                    pre
+                        code(class='language-pug')
                         
-        - var fixheadcode = ".cyui-table-container(data-fixcol)\n    .cyui-table\n        ..."
-        .demo-title 表格示例 - 固定列 - 使用方法
-        .demo-code#base-table
-            .hl
-                pre
-                    code(class='language-pug') #{fixheadcode}
 
-        .demo-title 表格示例 - 合并行
+        .demo-title 合并行
         .demo-item
-            .cyui-table-container(data-border, data-fixcol)
-                .cyui-table(style='width: 800px')
+            .cyui-table-container(data-border, data-merge-row)
+                .cyui-table
                     .tr
-                        .th(style='width: 100px ') 姓名
+                        .th 姓名
                         .th 性别
-                        .th 电话
-                        .th 地址
-                        .th 备注
+                        .th(style='width: 60%') 地址
                     .tr                
                         .td 乌拉拉
                         .td 男
-                        .td 12345678910
-                        .td 厦门创想中心B座1801
-                        .td 是一枚帅哥
-                    .tr
-                        .td(style="position: absolute; right: 0") 合计
-                        .td 合计
-                        .td 18522221211
-                        .td 厦门湖里区创想中心B座1801
-                        .td 低头走路的人只看到大地的厚重，却忽略了高空的高远；抬头走路的人，只看到高空的广阔，却忽略了脚下的艰辛与险峻。
+                        .td 北京西城区中南海
+                    .tr 
+                        .td(data-empty)
+                            div(data-merge-item, style='width: 40%') 合计
+                        .td(data-empty)
+                        .td 北京西城区中南海
 
+            .demo-code-title 使用方法
+            .demo-code#table-merge-row
+                .hl
+                    pre
+                        code(class='language-pug') 
 
-        .demo-title 表格示例 - 合并列
+        .demo-title 合并列
         .demo-item
-            .cyui-table-container(data-border, data-fixcol)
-                .cyui-table(style='width: 800px')
+            .cyui-table-container(data-border, data-merge-col)
+                .cyui-table
                     .tr
-                        .th(style='width: 100px ') 姓名
-                        .th 性别
-                        .th 电话
+                        .th 姓名
+                        .th(style='width: 15%') 性别
                         .th 地址
-                        .th 备注
-                    .tr                
-                        .td 乌拉拉
-                        .td(style='position: absolute;   bottom: 0') 你好
-                        .td 12345678910
-                        .td 厦门创想中心B座1801
-                        .td 是一枚帅哥
+                        
                     .tr
                         .td 乌拉拉
-                        .td 你好
-                        .td 18522221211
-                        .td 厦门湖里区创想中心B座1801
-                        .td 低头走路的人只看到大地的厚重，却忽略了高空的高远；抬头走路的人，只看到高空的广阔，却忽略了脚下的艰辛与险峻。
+                        .td(data-empty)
+                            div(data-merge-item, style='width: 15%') 跨性别
+                        .td 北京西城区中南海 
+                    .tr
+                        .td 乌拉拉
+                        .td(data-empty)
+                        .td 北京西城区中南海
 
+            .demo-code-title 使用方法
+            .demo-code#table-merge-col
+                .hl
+                    pre
+                        code(class='language-pug') 
 

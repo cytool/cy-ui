@@ -16,322 +16,375 @@
   </head>
   <body>
     <div class="demo demo-table">
-      <div class="demo-title">表格示例 - 基础表格</div>
+      <div class="demo-title">基础表格</div>
       <div class="demo-item">
         <div class="cyui-table-container" data-border>
           <div class="cyui-table">
             <div class="tr">
               <div class="th">姓名</div>
               <div class="th">性别</div>
-              <div class="th">电话</div>
-              <div class="th">地址</div>
-              <div class="th">备注</div>
+              <div class="th">地址 </div>
             </div>
             <div class="tr">
               <div class="td">乌拉拉</div>
-              <div class="td">男</div>
-              <div class="td">12345678910</div>
-              <div class="td">厦门创想中心B座1801</div>
-              <div class="td">是一枚帅哥</div>
+              <div class="td">男 </div>
+              <div class="td">北京西城区中南海 </div>
+            </div>
+            <div class="tr">
+              <div class="td">乌拉拉</div>
+              <div class="td">男 </div>
+              <div class="td">北京西城区中南海 </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="demo-title">表格示例 - 基础表格 - 使用方法</div>
-      <div class="demo-code" id="base-table">
-        <div class="hl">
-          <pre><code class="language-pug"></code></pre>
+        <div class="demo-code-title">使用方法</div>
+        <div class="demo-code" id="table-base">
+          <div class="hl">
+            <pre><code class="language-pug"></code></pre>
+          </div>
         </div>
       </div>
-      <div class="demo-title">表格示例 - X轴滚动</div>
+      <div class="demo-title">基础表格 - 条纹</div>
+      <div class="demo-item">
+        <div class="cyui-table-container" data-stripe>
+          <div class="cyui-table">
+            <div class="tr">
+              <div class="th">姓名</div>
+              <div class="th">性别</div>
+              <div class="th">地址</div>
+            </div>
+            <div class="tr">
+              <div class="td">乌拉拉</div>
+              <div class="td">男 </div>
+              <div class="td">北京西城区中南海 </div>
+            </div>
+            <div class="tr">
+              <div class="td">乌拉拉</div>
+              <div class="td">男 </div>
+              <div class="td">北京西城区中南海 </div>
+            </div>
+            <div class="tr">
+              <div class="td">乌拉拉</div>
+              <div class="td">男 </div>
+              <div class="td">北京西城区中南海 </div>
+            </div>
+          </div>
+        </div>
+        <div class="demo-code-title">使用方法</div>
+        <div class="demo-code" id="table-stripe">
+          <div class="hl">
+            <pre><code class="language-pug"></code></pre>
+          </div>
+        </div>
+      </div>
+      <div class="demo-title">基础表格 - 线条之横线</div>
+      <div class="demo-item">
+        <div class="cyui-table-container" data-line-x>
+          <div class="cyui-table">
+            <div class="tr">
+              <div class="th">姓名</div>
+              <div class="th">性别</div>
+              <div class="th">地址</div>
+            </div>
+            <div class="tr">
+              <div class="td">乌拉拉</div>
+              <div class="td">男 </div>
+              <div class="td">北京西城区中南海</div>
+            </div>
+          </div>
+        </div>
+        <div class="demo-code-title">使用方法</div>
+        <div class="demo-code" id="table-line-x">
+          <div class="hl">
+            <pre><code class="language-pug"></code></pre>
+          </div>
+        </div>
+      </div>
+      <div class="demo-title">基础表格 - 线条之竖线</div>
+      <div class="demo-item">
+        <div class="cyui-table-container" data-line-y>
+          <div class="cyui-table">
+            <div class="tr">
+              <div class="th">姓名</div>
+              <div class="th">性别</div>
+              <div class="th">地址</div>
+            </div>
+            <div class="tr">
+              <div class="td">乌拉拉</div>
+              <div class="td">男 </div>
+              <div class="td">北京西城区中南海</div>
+            </div>
+          </div>
+        </div>
+        <div class="demo-code-title">使用方法</div>
+        <div class="demo-code" id="table-line-y">
+          <div class="hl">
+            <pre><code class="language-pug"></code></pre>
+          </div>
+        </div>
+      </div>
+      <div class="demo-title">X轴滚动</div>
       <div class="demo-item">
         <div class="cyui-table-container" data-border>
-          <div class="cyui-table" style="width: 600px;">
+          <div class="cyui-table" style="width: 150%">
             <div class="tr">
-              <div class="th" style="width: 100px">姓名</div>
+              <div class="th">姓名</div>
               <div class="th">性别</div>
-              <div class="th">电话</div>
               <div class="th">地址</div>
-              <div class="th">备注</div>
             </div>
             <div class="tr">
               <div class="td">乌拉拉</div>
-              <div class="td">男</div>
-              <div class="td">12345678910</div>
-              <div class="td">厦门创想中心B座1801</div>
-              <div class="td">是一枚帅哥</div>
+              <div class="td">男 </div>
+              <div class="td">北京西城区中南海</div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="demo-title">表格示例 - X轴滚动 - 使用方法</div>
-      <div class="demo-code" id="base-table">
-        <div class="hl">
-          <pre><code class="language-pug">.cyui-table-container
-    .cyui-table(style='width: 800px')
-        ...</code></pre>
+        <div class="demo-code-title">使用方法</div>
+        <div class="demo-code" id="table-x">
+          <div class="hl">
+            <pre><code class="language-pug"></code></pre>
+          </div>
         </div>
       </div>
-      <div class="demo-title">表格示例 - Y轴滚动</div>
+      <div class="demo-title">Y轴滚动</div>
       <div class="demo-item">
         <div class="cyui-table-container" data-border style="height: 250px">
           <div class="cyui-table">
             <div class="tr">
-              <div class="th" style="width: 100px">姓名</div>
+              <div class="th">姓名</div>
               <div class="th">性别</div>
-              <div class="th">电话</div>
               <div class="th">地址</div>
-              <div class="th">备注</div>
             </div>
             <div class="tr">
               <div class="td">乌拉拉</div>
               <div class="td">男</div>
-              <div class="td">12345678910</div>
-              <div class="td">厦门创想中心B座1801</div>
-              <div class="td">是一枚帅哥</div>
-            </div>
-            <div class="tr">
-              <div class="td">乌拉拉二号</div>
-              <div class="td">男</div>
-              <div class="td"> </div>
-              <div class="td">厦门湖里区创想中心B座1801</div>
-              <div class="td">低头走路的人只看到大地的厚重，却忽略了高空的高远；抬头走路的人，只看到高空的广阔，却忽略了脚下的艰辛与险峻。</div>
+              <div class="td">北京西城区中南海</div>
             </div>
             <div class="tr">
               <div class="td">乌拉拉</div>
               <div class="td">男</div>
-              <div class="td">12345678910</div>
-              <div class="td">厦门创想中心B座1801</div>
-              <div class="td">是一枚帅哥</div>
-            </div>
-            <div class="tr">
-              <div class="td">乌拉拉二号</div>
-              <div class="td">男</div>
-              <div class="td"> </div>
-              <div class="td">厦门湖里区创想中心B座1801</div>
-              <div class="td">低头走路的人只看到大地的厚重，却忽略了高空的高远；抬头走路的人，只看到高空的广阔，却忽略了脚下的艰辛与险峻。</div>
+              <div class="td">北京西城区中南海</div>
             </div>
             <div class="tr">
               <div class="td">乌拉拉</div>
               <div class="td">男</div>
-              <div class="td">12345678910</div>
-              <div class="td">厦门创想中心B座1801</div>
-              <div class="td">是一枚帅哥</div>
+              <div class="td">北京西城区中南海</div>
             </div>
             <div class="tr">
-              <div class="td">乌拉拉二号</div>
+              <div class="td">乌拉拉</div>
               <div class="td">男</div>
-              <div class="td"> </div>
-              <div class="td">厦门湖里区创想中心B座1801</div>
-              <div class="td">低头走路的人只看到大地的厚重，却忽略了高空的高远；抬头走路的人，只看到高空的广阔，却忽略了脚下的艰辛与险峻。</div>
+              <div class="td">北京西城区中南海</div>
+            </div>
+            <div class="tr">
+              <div class="td">乌拉拉</div>
+              <div class="td">男</div>
+              <div class="td">北京西城区中南海</div>
+            </div>
+            <div class="tr">
+              <div class="td">乌拉拉</div>
+              <div class="td">男</div>
+              <div class="td">北京西城区中南海</div>
+            </div>
+            <div class="tr">
+              <div class="td">乌拉拉</div>
+              <div class="td">男</div>
+              <div class="td">北京西城区中南海</div>
+            </div>
+            <div class="tr">
+              <div class="td">乌拉拉</div>
+              <div class="td">男</div>
+              <div class="td">北京西城区中南海                    </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="demo-title">表格示例 - Y轴滚动 - 使用方法</div>
-      <div class="demo-code" id="base-table">
-        <div class="hl">
-          <pre><code class="language-pug">.cyui-table-container(style='height: 250px')
-    .cyui-table
-        ...</code></pre>
+        <div class="demo-code-title">使用方法</div>
+        <div class="demo-code" id="table-y">
+          <div class="hl">
+            <pre><code class="language-pug"> </code></pre>
+          </div>
         </div>
       </div>
-      <div class="demo-title">表格示例 - 固定表头</div>
+      <div class="demo-title">固定表头</div>
       <div class="demo-item">
         <div class="cyui-table-container" data-border data-fixhead style="height: 250px">
           <div class="cyui-table">
             <div class="tr">
-              <div class="th" style="width: 100px ">姓名</div>
-              <div class="th">性别</div>
-              <div class="th">电话</div>
+              <div class="th">姓名</div>
+              <div class="th">性别 </div>
+              <div class="th">地址 </div>
+            </div>
+            <div class="tr">
+              <div class="td">乌拉拉</div>
+              <div class="td">男 </div>
+              <div class="td">北京西城区中南海 </div>
+            </div>
+            <div class="tr">
+              <div class="td">乌拉拉</div>
+              <div class="td">男 </div>
+              <div class="td">北京西城区中南海 </div>
+            </div>
+            <div class="tr">
+              <div class="td">乌拉拉</div>
+              <div class="td">男 </div>
+              <div class="td">北京西城区中南海 </div>
+            </div>
+            <div class="tr">
+              <div class="td">乌拉拉</div>
+              <div class="td">男 </div>
+              <div class="td">北京西城区中南海 </div>
+            </div>
+            <div class="tr">
+              <div class="td">乌拉拉</div>
+              <div class="td">男 </div>
+              <div class="td">北京西城区中南海 </div>
+            </div>
+            <div class="tr">
+              <div class="td">乌拉拉</div>
+              <div class="td">男 </div>
+              <div class="td">北京西城区中南海 </div>
+            </div>
+            <div class="tr">
+              <div class="td">乌拉拉</div>
+              <div class="td">男 </div>
+              <div class="td">北京西城区中南海 </div>
+            </div>
+            <div class="tr">
+              <div class="td">乌拉拉</div>
+              <div class="td">男 </div>
+              <div class="td">北京西城区中南海 </div>
+            </div>
+            <div class="tr">
+              <div class="td">乌拉拉</div>
+              <div class="td">男 </div>
+              <div class="td">北京西城区中南海 </div>
+            </div>
+          </div>
+        </div>
+        <div class="demo-code-title">使用方法</div>
+        <div class="demo-code" id="table-fixhead">
+          <div class="hl">
+            <pre><code class="language-pug"></code></pre>
+          </div>
+        </div>
+      </div>
+      <div class="demo-title">固定列</div>
+      <div class="demo-item">
+        <div class="cyui-table-container" data-border data-fixcol>
+          <div class="cyui-table" style="width: 150%">
+            <div class="tr">
+              <div class="th">姓名</div>
+              <div class="th">性别              </div>
               <div class="th">地址</div>
-              <div class="th">备注</div>
             </div>
             <div class="tr">
               <div class="td">乌拉拉</div>
               <div class="td">男</div>
-              <div class="td">12345678910</div>
-              <div class="td">厦门创想中心B座1801</div>
-              <div class="td">是一枚帅哥</div>
+              <div class="td">北京西城区中南海</div>
             </div>
             <div class="tr">
-              <div class="td">乌拉拉二号</div>
+              <div class="td">乌拉拉</div>
               <div class="td">男</div>
-              <div class="td"> </div>
-              <div class="td">厦门湖里区创想中心B座1801</div>
+              <div class="td">北京西城区中南海</div>
+            </div>
+            <div class="tr">
+              <div class="td">乌拉拉</div>
+              <div class="td">男</div>
+              <div class="td">北京西城区中南海</div>
+            </div>
+          </div>
+        </div>
+        <div class="demo-code-title">使用方法</div>
+        <div class="demo-code" id="table-fixcol">
+          <div class="hl">
+            <pre><code class="language-pug"> </code></pre>
+          </div>
+        </div>
+      </div>
+      <div class="demo-title">固定2列</div>
+      <div class="demo-item">
+        <div class="cyui-table-container" data-border data-fixcol>
+          <div class="cyui-table" style="width: 150%">
+            <div class="tr">
+              <div class="th" data-fixcol-item style="width: 70px; left: 0px">姓名</div>
+              <div class="th" data-fixcol-item style="width: 50px; left: 70px">性别</div>
+              <div class="th">地址</div>
+            </div>
+            <div class="tr">               
+              <div class="td" data-fixcol-item style="left: 0">乌拉拉</div>
+              <div class="td" data-fixcol-item style="left: 70px">男</div>
               <div class="td">低头走路的人只看到大地的厚重，却忽略了高空的高远；抬头走路的人，只看到高空的广阔，却忽略了脚下的艰辛与险峻。</div>
             </div>
             <div class="tr">
-              <div class="td">乌拉拉</div>
-              <div class="td">男</div>
-              <div class="td">12345678910</div>
-              <div class="td">厦门创想中心B座1801</div>
-              <div class="td">是一枚帅哥</div>
-            </div>
-            <div class="tr">
-              <div class="td">乌拉拉二号</div>
-              <div class="td">男</div>
-              <div class="td"> </div>
-              <div class="td">厦门湖里区创想中心B座1801</div>
-              <div class="td">低头走路的人只看到大地的厚重，却忽略了高空的高远；抬头走路的人，只看到高空的广阔，却忽略了脚下的艰辛与险峻。</div>
-            </div>
-            <div class="tr">
-              <div class="td">乌拉拉</div>
-              <div class="td">男</div>
-              <div class="td">12345678910</div>
-              <div class="td">厦门创想中心B座1801</div>
-              <div class="td">是一枚帅哥</div>
-            </div>
-            <div class="tr">
-              <div class="td">乌拉拉二号</div>
-              <div class="td">男</div>
-              <div class="td"> </div>
-              <div class="td">厦门湖里区创想中心B座1801</div>
+              <div class="td" data-fixcol-item style="left: 0">乌拉拉</div>
+              <div class="td" data-fixcol-item style="left: 70px">男</div>
               <div class="td">低头走路的人只看到大地的厚重，却忽略了高空的高远；抬头走路的人，只看到高空的广阔，却忽略了脚下的艰辛与险峻。</div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="demo-title">表格示例 - 固定表头 - 使用方法</div>
-      <div class="demo-code" id="base-table">
-        <div class="hl">
-          <pre><code class="language-pug">.cyui-table-container(data-fixhead)
-    .cyui-table
-        ...</code></pre>
-        </div>
-      </div>
-      <div class="demo-title">表格示例 - 固定列</div>
-      <div class="demo-item">
-        <div class="cyui-table-container" data-border data-fixcol>
-          <div class="cyui-table" style="width: 800px">
-            <div class="tr">
-              <div class="th" style="width: 100px ">姓名</div>
-              <div class="th">性别</div>
-              <div class="th">电话</div>
-              <div class="th">地址</div>
-              <div class="th">备注</div>
-            </div>
-            <div class="tr">
-              <div class="td">乌拉拉</div>
-              <div class="td">男</div>
-              <div class="th">电话</div>
-              <div class="th">地址</div>
-              <div class="th">备注</div>
-            </div>
-            <div class="tr">
-              <div class="td">乌拉拉</div>
-              <div class="td">男</div>
-              <div class="td">12345678910</div>
-              <div class="td">厦门创想中心B座1801</div>
-              <div class="td">是一枚帅哥</div>
-            </div>
-            <div class="tr">
-              <div class="td">乌拉拉二号</div>
-              <div class="td">男</div>
-              <div class="td"> </div>
-              <div class="td">厦门湖里区创想中心B座1801</div>
-              <div class="td">低头走路的人只看到大地的厚重，却忽略了高空的高远；抬头走路的人，只看到高空的广阔，却忽略了脚下的艰辛与险峻。</div>
-            </div>
+        <div class="demo-code-title">使用方法</div>
+        <div class="demo-code" id="table-fixcol-2">
+          <div class="hl">
+            <pre><code class="language-pug"></code></pre>
           </div>
         </div>
       </div>
-      <div class="demo-title">表格示例 - 固定列 - 使用方法</div>
-      <div class="demo-code" id="base-table">
-        <div class="hl">
-          <pre><code class="language-pug">.cyui-table-container(data-fixcol)
-    .cyui-table
-        ...</code></pre>
-        </div>
-      </div>
-      <div class="demo-title">表格示例 - 固定列</div>
+      <div class="demo-title">合并行</div>
       <div class="demo-item">
-        <div class="cyui-table-container" data-border data-fixcol>
-          <div class="cyui-table" style="width: 800px">
+        <div class="cyui-table-container" data-border data-merge-row>
+          <div class="cyui-table">
             <div class="tr">
-              <div class="th" style="width: 100px ">姓名</div>
+              <div class="th">姓名</div>
               <div class="th">性别</div>
-              <div class="th">电话</div>
-              <div class="th">地址</div>
-              <div class="th">备注</div>
+              <div class="th" style="width: 60%">地址</div>
             </div>
             <div class="tr">               
               <div class="td">乌拉拉</div>
               <div class="td">男</div>
-              <div class="td">12345678910</div>
-              <div class="td">厦门创想中心B座1801</div>
-              <div class="td">是一枚帅哥</div>
+              <div class="td">北京西城区中南海</div>
             </div>
-            <div class="tr">
-              <div class="td">乌拉拉</div>
-              <div class="td">男</div>
-              <div class="td"> </div>
-              <div class="td">厦门湖里区创想中心B座1801</div>
-              <div class="td">低头走路的人只看到大地的厚重，却忽略了高空的高远；抬头走路的人，只看到高空的广阔，却忽略了脚下的艰辛与险峻。</div>
+            <div class="tr"> 
+              <div class="td" data-empty>
+                <div data-merge-item style="width: 40%">合计</div>
+              </div>
+              <div class="td" data-empty></div>
+              <div class="td">北京西城区中南海</div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="demo-title">表格示例 - 固定列 - 使用方法</div>
-      <div class="demo-code" id="base-table">
-        <div class="hl">
-          <pre><code class="language-pug">.cyui-table-container(data-fixcol)
-    .cyui-table
-        ...</code></pre>
-        </div>
-      </div>
-      <div class="demo-title">表格示例 - 合并行</div>
-      <div class="demo-item">
-        <div class="cyui-table-container" data-border data-fixcol>
-          <div class="cyui-table" style="width: 800px">
-            <div class="tr">
-              <div class="th" style="width: 100px ">姓名</div>
-              <div class="th">性别</div>
-              <div class="th">电话</div>
-              <div class="th">地址</div>
-              <div class="th">备注</div>
-            </div>
-            <div class="tr">               
-              <div class="td">乌拉拉</div>
-              <div class="td">男</div>
-              <div class="td">12345678910</div>
-              <div class="td">厦门创想中心B座1801</div>
-              <div class="td">是一枚帅哥</div>
-            </div>
-            <div class="tr">
-              <div class="td" style="position: absolute; right: 0">合计</div>
-              <div class="td">合计</div>
-              <div class="td">18522221211</div>
-              <div class="td">厦门湖里区创想中心B座1801</div>
-              <div class="td">低头走路的人只看到大地的厚重，却忽略了高空的高远；抬头走路的人，只看到高空的广阔，却忽略了脚下的艰辛与险峻。</div>
-            </div>
+        <div class="demo-code-title">使用方法</div>
+        <div class="demo-code" id="table-merge-row">
+          <div class="hl">
+            <pre><code class="language-pug"> </code></pre>
           </div>
         </div>
       </div>
-      <div class="demo-title">表格示例 - 合并列</div>
+      <div class="demo-title">合并列</div>
       <div class="demo-item">
-        <div class="cyui-table-container" data-border data-fixcol>
-          <div class="cyui-table" style="width: 800px">
+        <div class="cyui-table-container" data-border data-merge-col>
+          <div class="cyui-table">
             <div class="tr">
-              <div class="th" style="width: 100px ">姓名</div>
-              <div class="th">性别</div>
-              <div class="th">电话</div>
+              <div class="th">姓名</div>
+              <div class="th" style="width: 15%">性别</div>
               <div class="th">地址</div>
-              <div class="th">备注</div>
-            </div>
-            <div class="tr">               
-              <div class="td">乌拉拉</div>
-              <div class="td" style="position: absolute;   bottom: 0">你好</div>
-              <div class="td">12345678910</div>
-              <div class="td">厦门创想中心B座1801</div>
-              <div class="td">是一枚帅哥</div>
             </div>
             <div class="tr">
               <div class="td">乌拉拉</div>
-              <div class="td">你好</div>
-              <div class="td">18522221211</div>
-              <div class="td">厦门湖里区创想中心B座1801</div>
-              <div class="td">低头走路的人只看到大地的厚重，却忽略了高空的高远；抬头走路的人，只看到高空的广阔，却忽略了脚下的艰辛与险峻。</div>
+              <div class="td" data-empty>
+                <div data-merge-item style="width: 15%">跨性别</div>
+              </div>
+              <div class="td">北京西城区中南海 </div>
             </div>
+            <div class="tr">
+              <div class="td">乌拉拉</div>
+              <div class="td" data-empty></div>
+              <div class="td">北京西城区中南海</div>
+            </div>
+          </div>
+        </div>
+        <div class="demo-code-title">使用方法</div>
+        <div class="demo-code" id="table-merge-col">
+          <div class="hl">
+            <pre><code class="language-pug"> </code></pre>
           </div>
         </div>
       </div>
