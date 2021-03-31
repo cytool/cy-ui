@@ -59,7 +59,7 @@ const tableMergeRow = `.cyui-table-container(data-merge-row)
             .th(style='width: 60%') 地址
         .tr 
             .td(data-empty)
-                .row(style='width: 40%') 合计
+                div(data-merge-item, style='width: 40%') 合计
             .td(data-empty)
             .td 北京西城区中南海`
 
