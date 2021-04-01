@@ -1,0 +1,1 @@
+"use strict";var drawer="var d = new cyui.Drawer({\n    trigger: '.menu', // 触发弹窗的按钮\n    content: '.ui-drawer' // 弹窗内容\n})";window.addEventListener("load",function(){document.querySelector("#drawer code").innerHTML=Prism.highlight(drawer,Prism.languages.javascript,"javascript")});

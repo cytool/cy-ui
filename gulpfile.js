@@ -87,7 +87,9 @@ const funcJs = () => {
 
 
     return src('src/js/**/*')
-        .pipe(babel({ presets: ['@babel/env'], }))
+        .pipe(babel({
+            presets: ['@babel/env'],
+        }))
         .pipe(uglify())
         .pipe(dest(usePATH.js))
         .pipe(reload({ stream: true, }))

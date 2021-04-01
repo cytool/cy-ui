@@ -7,8 +7,15 @@ body
     max-width 750px
 
 pre[class*='language-']
+    background-color rgba(253, 246, 227, 0.4)
     font-size 13px
     margin 0
+
+pre[class*='language-']::-moz-selection, pre[class*='language-'] ::-moz-selection, code[class*='language-']::-moz-selection, code[class*='language-'] ::-moz-selection
+    background #8fddff
+
+pre[class*='language-']::selection, pre[class*='language-'] ::selection, code[class*='language-']::selection, code[class*='language-'] ::selection
+    background #8fddff
 
 .demo
     padding 20px
@@ -28,7 +35,10 @@ pre[class*='language-']
         padding 10px
 
     .demo-code-title
-        background-color #74b582
+        // background-color #74b582
+        background-color #fdf6e3
+        border-bottom 0.8px solid #eee
+        color #74b582
         margin-top 10px
 
     .demo-title-sub
