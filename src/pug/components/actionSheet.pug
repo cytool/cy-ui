@@ -1,0 +1,18 @@
+extends ../_tpl/_base.pug
+
+block css
+    +css(['../css/base', '../css/components/actionSheet'])
+block js
+    +js(['../js/components/actionSheet'])
+
+block cc
+    
+    .demo
+        h1.demo-title 展示描述信息
+        #actionSheet.demo-item
+            .cyui-action-row
+                .cyui-action-title 展示描述信息
+    script.
+        var v = new cyui.action({
+            dom: '#actionSheet',
+        })
