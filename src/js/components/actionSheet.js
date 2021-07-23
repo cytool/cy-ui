@@ -37,7 +37,7 @@ cyui._Action.prototype = {
                     <div class="cyui-action-change">选项一</div>
                     <div class="cyui-action-change">选项二</div>
                     <div class="cyui-action-change">选项三
-                        <div class="cyui-changetxt">描述信息</div>
+                        <div class="cyui-action-changetxt">描述信息</div>
                     </div>
                 </div>
                 <div class="cyui-action-bg"></div>
@@ -61,10 +61,9 @@ cyui._Action.prototype = {
             })
         } else {
             document.querySelector('.cyui-action-box').classList.remove('on')
-            // document.querySelector('.cyui-action-cancel').classList.add('on')
             setTimeout(() => {
                 document.querySelector('.cyui-action-dialog').classList.remove('on')
-            }, 500)
+            }, 600)
         }
     },
     /**
