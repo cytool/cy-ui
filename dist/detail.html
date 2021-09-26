@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>CYTOOL-UI组件库</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta content="telephone=no" name="format-detection">
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/themes/prism-solarizedlight.css">
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-pug.min.js"></script>
+    <link rel="stylesheet" href="css/base.css"/>
+    <link rel="stylesheet" href="css/detail.css"/>
+    <link rel="stylesheet" href="css/components/drawer.css"/>
+    <script src="js/components/drawer.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="header">
+        <div class="menu"></div>
+      </div>
+      <div class="ui-drawer">
+        <ul class="nav">
+          <li><a href="index.html">home</a></li>
+          <li><a href="detail.html?type=form">form</a></li>
+          <li><a href="detail.html?type=drawer">drawer</a></li>
+          <li><a href="detail.html?type=cascade">cascade</a></li>
+          <li><a href="detail.html?type=table2">table2</a></li>
+          <li><a href="detail.html?type=actionSheet">actionSheet</a></li>
+        </ul>
+      </div>
+      <script>
+        var d = new cyui.Drawer({
+            trigger: '.menu', // 触发弹窗的按钮
+            content: '.ui-drawer' // 弹窗内容
+        })
+      </script>
+      <div class="flex">
+        <iframe></iframe>
+      </div>
+    </div>
+    <script>
+      var type = location.search.replace(/\?type=/, '')
+      var src = `components/${type}.html`
+      document.querySelector('iframe').setAttribute('src', src)
+    </script>
+  </body>
+</html>

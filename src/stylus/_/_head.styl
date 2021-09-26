@@ -1,0 +1,40 @@
+.header
+    background-color #fff
+    display flex
+    height 50px
+    justify-content flex-end
+
+    .menu
+        background-color rgb(3, 169, 243)
+        border-bottom-left-radius 50px
+        line-height 50px
+        width 50px
+
+        &:after
+            background-image radial-gradient(
+                5px circle at 22px 22px,
+                #FFFFFF 50%,
+                transparent 51%
+            ), radial-gradient(
+                5px circle at 30.5px 22px,
+                #FFFFFF 50%,
+                transparent 51%
+            ), radial-gradient(
+                5px circle at 40px 22px,
+                #FFFFFF 50%,
+                transparent 51%
+            )
+            content ''
+            display block
+            height 50px
+
+.nav
+    margin-left 20px
+
+    li
+        border-bottom 0.5px solid #eee
+
+        a
+            display block
+            line-height 24px
+            padding 10px 0

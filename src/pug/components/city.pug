@@ -1,0 +1,19 @@
+extends ../_tpl/_base.pug
+
+block css
+    +css(['../css/base', '../css/components/city'])
+block js
+    +js(['../js/components/city'])
+
+block cc
+    
+    .demo
+        h1.demo-title 地址选择
+        #exampleCity.demo-item
+            .cyui-input-row
+                .cyui-input-label 所在地区
+                .cyui-input-input 省市区县、乡镇等
+    script.
+        var v = new cyui.City({
+            dom: '#exampleCity',
+        })

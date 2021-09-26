@@ -1,0 +1,20 @@
+extends ../_tpl/_base.pug
+
+block css
+    +css(['../css/base', '../css/components/drawer'])
+block js
+    +js(['../js/doc/drawer', '../js/components/drawer'])
+
+block cc
+    
+    .demo
+        .demo-title 抽屉示例
+        .demo-item
+            p.txt 请点击右上角↗️
+
+            .demo-code-title 使用方法
+            .demo-code#drawer
+                .hl
+                    pre
+                        code(class='language-js')
+            

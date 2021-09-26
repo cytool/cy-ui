@@ -1,0 +1,6 @@
+mixin css(name)
+    each val in name
+        link(rel="stylesheet", href='' + val + '.css')
+mixin js(name)
+    each val in name
+        script(src='' + val + '.js')

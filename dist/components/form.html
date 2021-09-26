@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>CYTOOL-UI组件库</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta content="telephone=no" name="format-detection">
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/themes/prism-solarizedlight.css">
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-pug.min.js"></script>
+    <link rel="stylesheet" href="../css/base.css"/>
+    <link rel="stylesheet" href="../css/components/form.css"/>
+    <script src="../js/doc/form.js"></script>
+    <script src="../js/components/form.js"></script>
+  </head>
+  <body>
+    <div class="demo">
+      <div class="demo-title">表单样式一</div>
+      <div class="demo-item">
+        <div class="ui-form ui-form-line" id="verfiyForm">
+          <div class="ui-form-item">
+            <div class="ui-input-content">
+              <div class="ui-label">
+                <label for="#">必填但不验证</label>
+              </div>
+              <div class="ui-input-box">
+                <div class="ui-input-in">   
+                  <input type="text" placeholder="请输入手机号" data-required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ui-form-item">
+            <div class="ui-input-content">
+              <div class="ui-label">
+                <label for="#">验证但不必填</label>
+              </div>
+              <div class="ui-input-box">
+                <div class="ui-input-in">   
+                  <input type="text" placeholder="请输入手机号" data-verify="phone">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ui-form-item">
+            <div class="ui-input-content">
+              <div class="ui-label">
+                <label for="#">必填且验证</label>
+              </div>
+              <div class="ui-input-box">
+                <div class="ui-input-in">   
+                  <input type="text" placeholder="请输入手机号" data-verify="phone" data-required>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="demo-code-title">使用方法</div>
+        <div class="demo-code" id="form1">
+          <div class="hl">
+            <pre><code class="language-js"> </code></pre>
+          </div>
+        </div>
+      </div>
+      <div class="demo-title">表单样式二</div>
+      <div class="demo-item">
+        <div class="ui-form ui-form-shadow" id="verfiyForm2">
+          <div class="ui-form-item">
+            <div class="ui-input-content">
+              <div class="ui-label">
+                <label for="#">必填但不验证</label>
+              </div>
+              <div class="ui-input-box">
+                <div class="ui-input-in">   
+                  <input type="text" placeholder="请输入手机号" data-required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ui-form-item">
+            <div class="ui-input-content">
+              <div class="ui-label">
+                <label for="#">验证但不必填</label>
+              </div>
+              <div class="ui-input-box">
+                <div class="ui-input-in">   
+                  <input type="text" placeholder="请输入手机号" data-verify="phone">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ui-form-item">
+            <div class="ui-input-content">
+              <div class="ui-label">
+                <label for="#">必填且验证</label>
+              </div>
+              <div class="ui-input-box">
+                <div class="ui-input-in">   
+                  <input type="text" placeholder="请输入手机号" data-verify="phone" data-required>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="demo-code-title">使用方法</div>
+        <div class="demo-code" id="form2">
+          <div class="hl">
+            <pre><code class="language-js"> </code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      var v = new cyui.Form({
+          dom: '#verfiyForm',
+          tipSkin: 1, // 表单样式
+          trigger: 'input', // 校验方式，实时
+      })
+      var v2 = new cyui.Form({
+          dom: '#verfiyForm2',
+          tipSkin: 2, // 表单样式
+          trigger: 'input', // 校验方式，实时
+      })
+    </script>
+  </body>
+</html>

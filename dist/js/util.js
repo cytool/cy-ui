@@ -1,0 +1,1 @@
+"use strict";var insertAfter=function(e,t){return t.insertAdjacentElement("afterend",e)};

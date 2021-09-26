@@ -1,0 +1,39 @@
+
+
+
+extends _tpl/_base.pug
+
+
+block css
+    +css(['css/base', 'css/index'])
+
+ 
+
+block cc
+    
+    
+
+    .wrapper
+        .index
+            h1.name 组件库
+            p.intro 超级无敌好用的页面组件库
+
+            ul.list
+                li
+                    a(href='detail.html?type=form') 表单
+                li
+                    a(href='detail.html?type=drawer') 抽屉
+                //- li
+                //-     a(href='detail.html?type=city') 省市区选择器
+                li
+                    a(href='detail.html?type=cascade') 级联选择
+                //- li
+                //-     a(href='detail.html?type=picker') 选择器
+                li
+                    a(href='detail.html?type=table2') 模拟表格
+                li
+                    a(href='detail.html?type=actionSheet') 动作面板
+                li
+                    a(href='detail.html?type=dropDown') 下拉列表
+                
+                

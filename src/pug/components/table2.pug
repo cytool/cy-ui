@@ -1,0 +1,325 @@
+extends ../_tpl/_base.pug
+
+block css
+    +css(['../css/base', '../css/components/table2'])
+block js
+    +js(['../js/doc/table2']) 
+
+block cc
+    
+    .demo.demo-table
+        .demo-title 基础表格
+        .demo-item
+            .cyui-table-container(data-border)
+                .cyui-table
+                    .tr
+                        .th 姓名
+                        .th 性别
+                        .th 地址 
+                    .tr
+                        .td 乌拉拉
+                        .td 男 
+                        .td 北京西城区中南海 
+                    .tr
+                        .td 乌拉拉
+                        .td 男 
+                        .td 北京西城区中南海 
+                   
+
+            .demo-code-title 使用方法
+            .demo-code#table-base
+                .hl
+                    pre
+                        code(class='language-pug')
+        
+        .demo-title 基础表格 - 条纹
+        .demo-item
+            .cyui-table-container(data-stripe)
+                .cyui-table
+                    .tr
+                        .th 姓名
+                        .th 性别
+                        .th 地址
+                    .tr
+                        .td 乌拉拉
+                        .td 男 
+                        .td 北京西城区中南海 
+                    .tr
+                        .td 乌拉拉
+                        .td 男 
+                        .td 北京西城区中南海 
+                    .tr
+                        .td 乌拉拉
+                        .td 男 
+                        .td 北京西城区中南海 
+                   
+
+            .demo-code-title 使用方法
+            .demo-code#table-stripe
+                .hl
+                    pre
+                        code(class='language-pug')
+
+
+        .demo-title 基础表格 - 线条之横线
+        .demo-item
+            .cyui-table-container(data-line-x)
+                .cyui-table
+                    .tr
+                        .th 姓名
+                        .th 性别
+                        .th 地址
+                    .tr
+                        .td 乌拉拉
+                        .td 男 
+                        .td 北京西城区中南海
+
+            .demo-code-title 使用方法
+            .demo-code#table-line-x
+                .hl
+                    pre
+                        code(class='language-pug')
+
+        .demo-title 基础表格 - 线条之竖线
+        .demo-item
+            .cyui-table-container(data-line-y)
+                .cyui-table
+                    .tr
+                        .th 姓名
+                        .th 性别
+                        .th 地址
+                    .tr
+                        .td 乌拉拉
+                        .td 男 
+                        .td 北京西城区中南海
+
+            .demo-code-title 使用方法
+            .demo-code#table-line-y
+                .hl
+                    pre
+                        code(class='language-pug')
+
+
+        .demo-title X轴滚动
+        .demo-item
+            .cyui-table-container(data-border)
+                .cyui-table(style='width: 150%')
+                    .tr
+                        .th 姓名
+                        .th 性别
+                        .th 地址
+                    .tr
+                        .td 乌拉拉
+                        .td 男 
+                        .td 北京西城区中南海
+         
+            .demo-code-title 使用方法
+            .demo-code#table-x
+                .hl
+                    pre
+                        code(class='language-pug')
+
+        .demo-title Y轴滚动
+        .demo-item
+            .cyui-table-container(data-border, style='height: 250px')
+                .cyui-table
+                    .tr
+                        .th 姓名
+                        .th 性别
+                        .th 地址
+                    .tr
+                        .td 乌拉拉
+                        .td 男
+                        .td 北京西城区中南海
+                    .tr
+                        .td 乌拉拉
+                        .td 男
+                        .td 北京西城区中南海
+                    .tr
+                        .td 乌拉拉
+                        .td 男
+                        .td 北京西城区中南海
+                    .tr
+                        .td 乌拉拉
+                        .td 男
+                        .td 北京西城区中南海
+                    .tr
+                        .td 乌拉拉
+                        .td 男
+                        .td 北京西城区中南海
+                    .tr
+                        .td 乌拉拉
+                        .td 男
+                        .td 北京西城区中南海
+                    .tr
+                        .td 乌拉拉
+                        .td 男
+                        .td 北京西城区中南海
+                    .tr
+                        .td 乌拉拉
+                        .td 男
+                        .td 北京西城区中南海                    
+
+            .demo-code-title 使用方法
+            .demo-code#table-y
+                .hl
+                    pre
+                        code(class='language-pug') 
+
+
+        .demo-title 固定表头
+        .demo-item
+            .cyui-table-container(data-border, data-fixhead, style='height: 250px')
+                .cyui-table
+                    .tr
+                        .th 姓名
+                        .th 性别 
+                        .th 地址 
+                    .tr
+                        .td 乌拉拉
+                        .td 男 
+                        .td 北京西城区中南海 
+                    .tr
+                        .td 乌拉拉
+                        .td 男 
+                        .td 北京西城区中南海 
+                    .tr
+                        .td 乌拉拉
+                        .td 男 
+                        .td 北京西城区中南海 
+                    .tr
+                        .td 乌拉拉
+                        .td 男 
+                        .td 北京西城区中南海 
+                    .tr
+                        .td 乌拉拉
+                        .td 男 
+                        .td 北京西城区中南海 
+                    .tr
+                        .td 乌拉拉
+                        .td 男 
+                        .td 北京西城区中南海 
+                    .tr
+                        .td 乌拉拉
+                        .td 男 
+                        .td 北京西城区中南海 
+                    .tr
+                        .td 乌拉拉
+                        .td 男 
+                        .td 北京西城区中南海 
+                    .tr
+                        .td 乌拉拉
+                        .td 男 
+                        .td 北京西城区中南海 
+                    
+    
+            .demo-code-title 使用方法
+            .demo-code#table-fixhead
+                .hl
+                    pre
+                        code(class='language-pug')
+
+        .demo-title 固定列
+        .demo-item
+            .cyui-table-container(data-border, data-fixcol)
+                .cyui-table(style='width: 150%')
+                    .tr
+                        .th 姓名
+                        .th 性别              
+                        .th 地址
+                    .tr
+                        .td 乌拉拉
+                        .td 男
+                        .td 北京西城区中南海
+                    .tr
+                        .td 乌拉拉
+                        .td 男
+                        .td 北京西城区中南海
+                    .tr
+                        .td 乌拉拉
+                        .td 男
+                        .td 北京西城区中南海
+
+            .demo-code-title 使用方法
+            .demo-code#table-fixcol
+                .hl
+                    pre
+                        code(class='language-pug') 
+
+
+        .demo-title 固定2列
+        .demo-item
+            .cyui-table-container(data-border, data-fixcol)
+                .cyui-table(style='width: 150%')
+                    .tr
+                        .th(data-fixcol-item, style='width: 70px; left: 0px') 姓名
+                        .th(data-fixcol-item, style='width: 50px; left: 70px') 性别
+                        .th 地址
+      
+                    .tr                
+                        .td(data-fixcol-item, style='left: 0') 乌拉拉
+                        .td(data-fixcol-item, style='left: 70px') 男
+                        .td 低头走路的人只看到大地的厚重，却忽略了高空的高远；抬头走路的人，只看到高空的广阔，却忽略了脚下的艰辛与险峻。
+        
+                    .tr
+                        .td(data-fixcol-item, style='left: 0') 乌拉拉
+                        .td(data-fixcol-item, style='left: 70px') 男
+                        .td 低头走路的人只看到大地的厚重，却忽略了高空的高远；抬头走路的人，只看到高空的广阔，却忽略了脚下的艰辛与险峻。
+            
+
+            .demo-code-title 使用方法
+            .demo-code#table-fixcol-2
+                .hl
+                    pre
+                        code(class='language-pug')
+                        
+
+        .demo-title 合并行
+        .demo-item
+            .cyui-table-container(data-border, data-merge-row)
+                .cyui-table
+                    .tr
+                        .th 姓名
+                        .th 性别
+                        .th(style='width: 60%') 地址
+                    .tr                
+                        .td 乌拉拉
+                        .td 男
+                        .td 北京西城区中南海
+                    .tr 
+                        .td(data-empty)
+                            div(data-merge-item, style='width: 40%') 合计
+                        .td(data-empty)
+                        .td 北京西城区中南海
+
+            .demo-code-title 使用方法
+            .demo-code#table-merge-row
+                .hl
+                    pre
+                        code(class='language-pug') 
+
+        .demo-title 合并列
+        .demo-item
+            .cyui-table-container(data-border, data-merge-col)
+                .cyui-table
+                    .tr
+                        .th 姓名
+                        .th(style='width: 15%') 性别
+                        .th 地址
+                        
+                    .tr
+                        .td 乌拉拉
+                        .td(data-empty)
+                            div(data-merge-item, style='width: 15%') 跨性别
+                        .td 北京西城区中南海 
+                    .tr
+                        .td 乌拉拉
+                        .td(data-empty)
+                        .td 北京西城区中南海
+
+            .demo-code-title 使用方法
+            .demo-code#table-merge-col
+                .hl
+                    pre
+                        code(class='language-pug') 
+
